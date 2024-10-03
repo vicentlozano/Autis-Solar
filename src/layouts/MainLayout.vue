@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> {{ pageTitle }} </q-toolbar-title>
+        <q-toolbar-title> {{ pageTitle || company }} </q-toolbar-title>
 
         <q-btn
           flat
@@ -56,6 +56,12 @@ const darkMode = ref(Dark.isActive);
 const route = useRoute();
 const pageTitle = ref(route.name);
 const linksList = [
+{
+    title: "Home",
+    caption: "",
+    icon: "home",
+    link: "/",
+  },
   {
     title: "Panel Control",
     caption: "",
@@ -97,7 +103,7 @@ const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
 };
 
-function toggleLeftDrawer() {
+function toggleLeftDrawer() {Array
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
