@@ -19,14 +19,24 @@ const routes = [
         component: () => import("pages/StatisticsPage.vue"),
       },
       {
-        name: "Projections",
-        path: "/Projections",
-        component: () => import("pages/ProjectionsPage.vue"),
+        name: "Exploitation",
+        path: "/Exploitation",
+        component: () => import("src/pages/ExploitationPage.vue"),
       },
       {
         name: "Parameters",
         path: "/Parameters",
         component: () => import("pages/ParametersPage.vue"),
+      },
+      {
+        name: "Alerts",
+        path: "/Alerts",
+        component: () => import("src/pages/AlarmsPage.vue"),
+      },
+      {
+        name: "Historical Data",
+        path: "/Historic",
+        component: () => import("pages/HistoricalPage.vue"),
       },
     ],
   },

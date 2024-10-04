@@ -24,13 +24,12 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header class="label"> {{ company }} </q-item-label>
-
-        <EssentialLink
+        <!-- <EssentialLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
-        />
+        /> -->
+        <NavegationMenu :menuList="menuList" />
       </q-list>
     </q-drawer>
 
@@ -45,6 +44,7 @@ import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { Dark } from "quasar";
 import EssentialLink from "components/EssentialLink.vue";
+import NavegationMenu from "src/components/NavegationMenu.vue";
 
 defineOptions({
   name: "MainLayout",
@@ -55,8 +55,84 @@ const company = "Autis";
 const darkMode = ref(Dark.isActive);
 const route = useRoute();
 const pageTitle = ref(route.name);
+const menuList = [
+  {
+    icon: "home",
+    label: "Home",
+    separator: true,
+    link: "/",
+  },
+  {
+    icon: "settings",
+    label: "Exploitation",
+    separator: false,
+    link: "/Exploitation",
+  },
+  {
+    icon: "memory",
+    label: "Sistems",
+    separator: true,
+    link: "/",
+  },
+  {
+    icon: "search",
+    label: "SSAA",
+    separator: false,
+    link: "/",
+  },
+  {
+    icon: "device_hub",
+    label: "Single Line",
+    separator: false,
+    link: "/",
+  },
+  {
+    icon: "wb_sunny",
+    label: "Meteo",
+    separator: false,
+    link: "/",
+  },
+  {
+    icon: "bar_chart",
+    label: "Historical Data",
+    separator: false,
+    link: "/",
+  },
+  {
+    icon: "balance",
+    label: "Balance",
+    separator: false,
+    link: "/",
+  },
+  {
+    icon: "notifications",
+    label: "Alerts",
+    separator: false,
+    subMenuItem: [
+      {
+        icon: "Danger",
+        label: "Alarms",
+        separator: false,
+        link: "/Alerts",
+      },
+      {
+        icon: "Alert",
+        label: "Notifications",
+        separator: true,
+        link: "/",
+      },
+    ],
+  },
+  {
+    icon: "help",
+    iconColor: "primary",
+    label: "Help",
+    separator: false,
+    link: "/",
+  },
+];
 const linksList = [
-{
+  {
     title: "Home",
     caption: "",
     icon: "home",
@@ -92,6 +168,18 @@ const linksList = [
     icon: "trending_up",
     link: "/Projections",
   },
+  {
+    title: "Historical Data",
+    caption: "",
+    icon: "history",
+    link: "/Historic",
+  },
+  {
+    title: "Alerts",
+    caption: "",
+    icon: "alarm",
+    link: "/Alerts",
+  },
 ];
 
 watch(route, (newRoute) => {
@@ -103,7 +191,8 @@ const toggleDarkMode = () => {
   darkMode.value = !darkMode.value;
 };
 
-function toggleLeftDrawer() {Array
+function toggleLeftDrawer() {
+  Array;
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
@@ -119,7 +208,6 @@ function toggleLeftDrawer() {Array
   font-size: larger;
 }
 .center {
-  
   text-align: center;
 }
 </style>
