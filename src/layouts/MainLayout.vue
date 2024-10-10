@@ -96,7 +96,7 @@ const menuList = [
     icon: "bar_chart",
     label: "Historical Data",
     separator: false,
-    link: "/",
+    link: "/Historic",
   },
   {
     icon: "balance",
@@ -119,7 +119,7 @@ const menuList = [
         icon: "Alert",
         label: "Notifications",
         separator: true,
-        link: "/",
+        link: "/Notifications",
       },
     ],
   },

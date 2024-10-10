@@ -9,7 +9,7 @@
         v-for="(subMenuItem, subIndex) in menuItem.subMenuItem"
         :key="subIndex"
       >
-        <q-item clickable :active="subMenuItem.label === 'Outbox'"  :to="subMenuItem.link" v-ripple>
+        <q-item clickable :active="subMenuItem.link === $route.path"  :to="subMenuItem.link" v-ripple>
           <q-item-section avatar>
             <q-icon :name="subMenuItem.icon" />
           </q-item-section>
@@ -20,7 +20,7 @@
         <q-separator :key="'sep' + subIndex" v-if="subMenuItem.separator" />
       </template>
     </q-expansion-item>
-    <q-item v-else clickable :active="menuItem.label === 'Outbox'" v-ripple :to="menuItem.link">
+    <q-item v-else clickable :active="menuItem.link === $route.path" v-ripple :to="menuItem.link">
       <q-item-section avatar>
         <q-icon :name="menuItem.icon" />
       </q-item-section>

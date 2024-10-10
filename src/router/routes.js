@@ -38,6 +38,11 @@ const routes = [
         path: "/Historic",
         component: () => import("pages/HistoricalPage.vue"),
       },
+      {
+        name: "Notifications",
+        path: "/Notifications",
+        component: () => import("pages/NotificationsPage.vue"),
+      },
     ],
   },
 
