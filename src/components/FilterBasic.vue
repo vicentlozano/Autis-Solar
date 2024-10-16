@@ -1,13 +1,11 @@
 <template>
   <div class="q-pa-md" style="max-width: 300px">
     <div class="q-gutter-md">
-      <q-badge color="secondary" multi-line>{{ title }}</q-badge>
       <q-select
         filled
         v-model="model"
         :options="options"
-        stack-label
-        label=""
+        :label="title"
         :display-value="`${model ? model : options[0]}`"
       >
         <template v-slot:append>
@@ -23,7 +21,7 @@
   </div>
 </template>
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { ref, defineProps, defineEmits, watch } from "vue";
 const props = defineProps({
   options: Array,
   title: String,

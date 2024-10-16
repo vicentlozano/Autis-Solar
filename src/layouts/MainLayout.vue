@@ -197,7 +197,7 @@ function toggleLeftDrawer() {
 }
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 .globalStyle {
@@ -209,5 +209,8 @@ function toggleLeftDrawer() {
 }
 .center {
   text-align: center;
+}
+body.body--dark {
+  background-color: #1c1c1e;
 }
 </style>

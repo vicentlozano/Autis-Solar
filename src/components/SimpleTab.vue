@@ -1,14 +1,15 @@
 <template>
   <div class="q-pa-md">
-      <q-table
-        class="custom-table"
-        bordered
-        :rows="rows"
-        :columns="columns"
-        row-key="name"
-        :separator="false"
-        :rows-per-page-options="[5, 10]"
-      />
+    <h4 class="table-title text-primary">{{ title }}</h4>
+    <q-table
+      class="custom-table"
+      bordered
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      :separator="false"
+      :rows-per-page-options="[5, 10]"
+    />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import { ref, defineProps } from "vue";
 const props = defineProps({
   rows: Array,
   columns: Array,
+  title: String,
 });
 const visible = ref(true);
 </script>
@@ -30,9 +32,7 @@ const visible = ref(true);
   ::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento en WebKit (Chrome, Safari) */
   }
-
 }
-
 
 :deep(.custom-table th) {
   background-color: #3f7cb5; /* Cambia esto al color que prefieras */
@@ -44,5 +44,10 @@ const visible = ref(true);
 
 :deep(.custom-table td) {
   /* Cambia esto al color que prefieras */
+}
+.table-title{
+margin-bottom: 1rem;
+text-align: center;
+font-weight: 600;
 }
 </style>
