@@ -8,7 +8,7 @@
       <SearchFilter />
       <div class="botton-toggle q-pa-md">
         <ToggleField />
-        <q-btn outline rounded color="primary" label="To Query" />
+        <q-btn outline rounded  dense color="primary" label="To Query" />
       </div>
     </q-card>
   </div>
