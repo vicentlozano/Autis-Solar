@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md" style="max-width: 300px">
-    <q-input filled v-model="dateRangeDisplay">
+    <q-input label="Range" filled v-model="dateRangeDisplay">
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -21,24 +21,36 @@ import { ref, defineProps, defineEmits, watch } from "vue";
 
 const props = defineProps({
   dateRange: {
-    type: Object,
-    default: () => ({
-      from: new Date().toISOString().slice(0, 10),
-      to: new Date().toISOString().slice(0, 10),
-    }),
+    type: [Object, String],
+    default: () => new Date().toISOString().slice(0, 10).replace(/-/g, "/"),
   },
 });
 
 const emits = defineEmits(["dateRangeSelected"]);
 
-const dateRange = ref({...props.dateRange});
-const dateRangeDisplay = ref(`${dateRange.value.from} - ${dateRange.value.to}`);
+const dateRange = ref(
+  typeof props.dateRange === "string"
+    ? { from: props.dateRange, to: props.dateRange }
+    : { ...props.dateRange }
+);
 
-// Watch for changes in the date range and emit the event
+const dateRangeDisplay = ref(
+  typeof props.dateRange === "string"
+    ? props.dateRange
+    : `${dateRange.value.from} - ${dateRange.value.to}`
+);
+
 watch(dateRange, (newDateRange) => {
-  dateRangeDisplay.value = `${newDateRange.from} - ${newDateRange.to}`;
-  emits("dateRangeSelected", newDateRange);
+  if (typeof newDateRange === "string") {
+    dateRangeDisplay.value = newDateRange;
+    emits("dateRangeSelected", newDateRange);
+  } else {
+    dateRangeDisplay.value = `${newDateRange.from} - ${newDateRange.to}`;
+    emits("dateRangeSelected", newDateRange);
+  }
 });
+
+console.log(dateRangeDisplay.value);
 </script>
 
 <style scoped></style>

@@ -26,8 +26,7 @@ const props = defineProps({
   options: Array,
   title: String,
 });
-const model = ref("");
-
+const model = ref(props.options.length > 0 ? props.options[0] : "");
 const emits = defineEmits(["update:modelValue"]);
 watch(model, (newValue) => {
   emits("update:modelValue", newValue);
