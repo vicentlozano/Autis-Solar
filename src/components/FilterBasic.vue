@@ -1,8 +1,9 @@
 <template>
-  <div class="q-pa-md" style="max-width: 300px">
-    <div class="q-gutter-md">
+  <div class="q-pa-md custom">
+    <div class="q-gutter-md custom">
       <q-select
-        filled
+        outlined
+        dense
         v-model="model"
         :options="options"
         :label="title"
@@ -32,3 +33,10 @@ watch(model, (newValue) => {
   emits("update:modelValue", newValue);
 });
 </script>
+<style scoped>
+.custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

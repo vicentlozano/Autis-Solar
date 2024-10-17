@@ -4,6 +4,7 @@
     <q-table
       class="custom-table"
       bordered
+      flat
       :rows="rows"
       :columns="columns"
       row-key="name"
@@ -25,9 +26,6 @@ const visible = ref(true);
 
 <style scoped>
 :deep(.custom-table) {
-  border-radius: 10px; /* Ajusta el valor según tus necesidades */
-  overflow: hidden; /* Asegura que el contenido no se desborde */
-  border: 1px solid #ccc; /* Añade un borde si es necesario */
   max-height: 300px;
   ::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento en WebKit (Chrome, Safari) */
@@ -35,19 +33,19 @@ const visible = ref(true);
 }
 
 :deep(.custom-table th) {
-  background-color: #3f7cb5; /* Cambia esto al color que prefieras */
-  color: white; /* Color del texto */
+  background-color: var(--q-primary);
+  color: white; 
   position: sticky;
   top: 0;
   z-index: 1;
 }
 
 :deep(.custom-table td) {
-  /* Cambia esto al color que prefieras */
+ 
 }
-.table-title{
-margin-bottom: 1rem;
-text-align: center;
-font-weight: 600;
+.table-title {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
 }
 </style>

@@ -83,7 +83,7 @@ const setRangeOption = (value) => {
     from: formatDate(from),
     to: formatDate(to),
   };
-  console.log(intervalSelected.value)
+  console.log(intervalSelected.value);
 };
 </script>
 
@@ -91,5 +91,7 @@ const setRangeOption = (value) => {
 .horizontal {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>

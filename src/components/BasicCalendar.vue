@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md" style="max-width: 300px">
-    <q-input label="Range" filled v-model="dateRangeDisplay">
+    <q-input label="Range" dense outlined v-model="dateRangeDisplay">
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -78,7 +78,7 @@ console.log(
 </script>
 
 <style scoped>
-:deep(.cursor-pointer) {
-  padding-right: 0px;
+::deep(.cursor-pointer) {
+  padding-right: 1px;
 }
 </style>
