@@ -29,9 +29,9 @@ const props = defineProps({
 const emits = defineEmits(["dateRangeSelected"]);
 
 const dateRange = ref(
-  typeof props.dateRange === "string"
+  typeof props.dateRange !== "string"
     ? { from: props.dateRange, to: props.dateRange }
-    : { ...props.dateRange }
+    : props.dateRange
 );
 
 const dateRangeDisplay = ref(
@@ -40,17 +40,35 @@ const dateRangeDisplay = ref(
     : `${dateRange.value.from} - ${dateRange.value.to}`
 );
 
+watch(
+  () => props.dateRange,
+  (newVal) => {
+    console.log("BasicCalendar - props.dateRange changed:", newVal);
+    if (typeof newVal === "string") {
+      dateRange.value = newVal;
+      dateRangeDisplay.value = newVal;
+    } else{
+      dateRange.value = { ...newVal };
+      dateRangeDisplay.value = `${newVal.from} - ${newVal.to}`;
+    }
+  },
+  { immediate: true }
+);
+
 watch(dateRange, (newDateRange) => {
+  console.log("BasicCalendar - dateRange changed:", newDateRange);
   if (typeof newDateRange === "string") {
     dateRangeDisplay.value = newDateRange;
     emits("dateRangeSelected", newDateRange);
   } else {
-    dateRangeDisplay.value = `${newDateRange.from} - ${newDateRange.to}`;
     emits("dateRangeSelected", newDateRange);
   }
 });
 
-console.log(dateRangeDisplay.value);
+console.log(
+  "BasicCalendar - Initial dateRangeDisplay:",
+  dateRangeDisplay.value
+);
 </script>
 
 <style scoped></style>

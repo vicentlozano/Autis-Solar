@@ -83,6 +83,7 @@ const setRangeOption = (value) => {
     from: formatDate(from),
     to: formatDate(to),
   };
+  console.log(intervalSelected.value)
 };
 </script>
 
