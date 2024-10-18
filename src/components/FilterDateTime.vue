@@ -3,19 +3,19 @@
     <FilterBasic
       :options="intervals"
       :title="'Intervals'"
-      @update:modelValue="setRangeOption"
+      @filterSelect="setRangeOption"
     />
-    <RangeCalendar :intervalOptions="intervalSelected" />
+    <RangeCalendar
+      :intervalOptions="intervalSelected"
+      @dateRangeSelected="setRangeData"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, defineEmits, watch } from "vue";
 import FilterBasic from "./FilterBasic.vue";
 import RangeCalendar from "./RangeCalendar.vue";
-
-// Determina si quieres inicializar como string u objeto
-const isSingleDate = true; // Cambia esto según tu lógica
 
 const intervalSelected = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
@@ -31,6 +31,9 @@ const intervals = ref([
 ]);
 
 const emits = defineEmits(["dateToSearch"]);
+const setRangeData = (value) => {
+  intervalSelected.value = value;
+};
 
 const setRangeOption = (value) => {
   const today = new Date();
@@ -42,14 +45,12 @@ const setRangeOption = (value) => {
         .toISOString()
         .slice(0, 10)
         .replace(/-/g, "/");
-
       return;
     case "Yesterday":
       intervalSelected.value = new Date(today.setDate(today.getDate() - 1))
         .toISOString()
         .slice(0, 10)
         .replace(/-/g, "/");
-
       return;
     case "This week":
       from = new Date(today.setDate(today.getDate() - today.getDay()));
@@ -83,15 +84,17 @@ const setRangeOption = (value) => {
     from: formatDate(from),
     to: formatDate(to),
   };
-  console.log(intervalSelected.value);
 };
+watch(intervalSelected, (newValue) => {
+  emits("dateToSearch", newValue);
+});
 </script>
 
 <style scoped>
 .horizontal {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 </style>

@@ -8,7 +8,7 @@
       :rows="rows"
       :columns="columns"
       row-key="name"
-      :separator="false"
+      :separator="'none'"
       :rows-per-page-options="[5, 10]"
     />
   </div>
@@ -34,14 +34,13 @@ const visible = ref(true);
 
 :deep(.custom-table th) {
   background-color: var(--q-primary);
-  color: white; 
+  color: white;
   position: sticky;
   top: 0;
   z-index: 1;
 }
 
 :deep(.custom-table td) {
- 
 }
 .table-title {
   margin-bottom: 1rem;

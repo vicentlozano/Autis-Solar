@@ -1,19 +1,13 @@
 <template>
-  <div class="q-pa-md custom" style="max-width: 300px">
+  <div class="custom q-pa-md" style="max-width: 300px">
     <q-input
-    rounded
+      class="custom-input"
+      rounded
       outlined
-      bottom-slots
       v-model="text"
       label="Search"
-      counter
-      maxlength="20"
       dense
     >
-      <template v-slot:before>
-        <q-icon name="flight_takeoff" />
-      </template>
-
       <template v-slot:append>
         <q-icon
           v-if="text !== ''"
@@ -23,19 +17,24 @@
         />
         <q-icon name="search" />
       </template>
-
-      <template v-slot:hint> Field hint </template>
     </q-input>
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits,watch } from "vue";
 const text = ref("");
+const emits = defineEmits(["charactersToSearch"]);
+watch(text, (newValue) =>{
+emits('charactersToSearch',newValue)
+});
 </script>
 <style scoped>
 .custom {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.custom-input {
+  min-width: 220px;
 }
 </style>

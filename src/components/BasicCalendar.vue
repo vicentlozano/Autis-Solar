@@ -1,6 +1,12 @@
 <template>
   <div class="q-pa-md" style="max-width: 300px">
-    <q-input label="Range" dense outlined v-model="dateRangeDisplay">
+    <q-input
+      class="custom-input"
+      label="Range"
+      dense
+      outlined
+      v-model="dateRangeDisplay"
+    >
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -43,7 +49,6 @@ const dateRangeDisplay = ref(
 watch(
   () => props.dateRange,
   (newVal) => {
-    console.log("BasicCalendar - props.dateRange changed:", newVal);
     if (typeof newVal === "string") {
       dateRange.value = { from: newVal, to: newVal };
       dateRangeDisplay.value = newVal;
@@ -56,29 +61,24 @@ watch(
 );
 
 watch(dateRange, (newDateRange) => {
-  console.log("BasicCalendar - dateRange changed:", newDateRange);
   if (newDateRange && newDateRange.from && newDateRange.to) {
     if (newDateRange.from === newDateRange.to) {
       dateRangeDisplay.value = newDateRange.from;
-      emits("dateRangeSelected", newDateRange.from);
     } else {
       dateRangeDisplay.value = `${newDateRange.from} - ${newDateRange.to}`;
-      emits("dateRangeSelected", newDateRange);
     }
   } else if (typeof newDateRange === "string") {
     dateRangeDisplay.value = newDateRange;
-    emits("dateRangeSelected", newDateRange);
   }
+  emits("dateRangeSelected", newDateRange);
 });
-
-console.log(
-  "BasicCalendar - Initial dateRangeDisplay:",
-  dateRangeDisplay.value
-);
 </script>
 
 <style scoped>
 ::deep(.cursor-pointer) {
   padding-right: 1px;
+}
+.custom-input {
+  min-width: 220px;
 }
 </style>

@@ -4,18 +4,17 @@
       @dateRangeSelected="setDateRange"
       :dateRange="intervalOptions"
     />
-    <div></div>
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps, watch } from "vue";
+import { ref, defineProps, watch, defineEmits } from "vue";
 import BasicCalendar from "./BasicCalendar.vue";
 
 const props = defineProps({
   intervalOptions: [Object, String],
 });
-
+const emits = defineEmits(['dateToSearch']);
 const dateRange = ref("");
 const model = ref({ from: "2020/07/08", to: "2020/07/17" });
 
