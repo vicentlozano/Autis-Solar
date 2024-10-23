@@ -86,7 +86,8 @@ const setRangeOption = (value) => {
   };
 };
 watch(intervalSelected, (newValue) => {
-  emits("dateToSearch", newValue);
+  emits("dateToSearch", intervalSelected.value);
+  console.log(intervalSelected.value);
 });
 </script>
 

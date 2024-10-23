@@ -50,7 +50,7 @@ watch(
   () => props.dateRange,
   (newVal) => {
     if (typeof newVal === "string") {
-      dateRange.value = { from: newVal, to: newVal };
+      dateRange.value = newVal;
       dateRangeDisplay.value = newVal;
     } else {
       dateRange.value = { ...newVal };
