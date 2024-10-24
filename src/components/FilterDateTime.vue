@@ -3,24 +3,27 @@
     <FilterBasic
       :options="intervals"
       :title="'Intervals'"
+      :custom="custom"
       @filterSelect="setRangeOption"
     />
-    <RangeCalendar
+    <BasicCalendar
       :intervalOptions="intervalSelected"
       @dateRangeSelected="setRangeData"
+      @isCustom="customDateOrNot"
     />
   </div>
 </template>
 
 <script setup>
-import { ref, defineEmits, watch } from "vue";
+import { ref, defineEmits, computed, watch } from "vue";
 import FilterBasic from "./FilterBasic.vue";
-import RangeCalendar from "./RangeCalendar.vue";
+import BasicCalendar from "./BasicCalendar.vue";
 
+const emits = defineEmits(["dateToSearch"]);
 const intervalSelected = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
 );
-
+const custom = ref(false);
 const intervals = ref([
   "Today",
   "Yesterday",
@@ -28,11 +31,15 @@ const intervals = ref([
   "Last week",
   "This month",
   "Last Month",
+  "Custom",
 ]);
 
-const emits = defineEmits(["dateToSearch"]);
+
 const setRangeData = (value) => {
   intervalSelected.value = value;
+};
+const customDateOrNot = (isCustom) => {
+  custom.value = isCustom;
 };
 
 const setRangeOption = (value) => {

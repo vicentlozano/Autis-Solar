@@ -4,17 +4,17 @@
       class="custom-select"
       outlined
       dense
-      v-model="model"
+      @update:model-value="select"
+      v-model="inputSelected"
       :options="options"
       :label="title"
-      :display-value="`${model ? model : options[0]}`"
     >
       <template v-slot:append>
         <q-icon
-          v-if="model !== null"
+          v-if="inputSelected !== null"
           class="cursor-pointer"
           name="clear"
-          @click.stop.prevent="model = null"
+          @click.stop.prevent="inputSelected = null"
         />
       </template>
     </q-select>
@@ -25,12 +25,24 @@ import { ref, defineProps, defineEmits, watch } from "vue";
 const props = defineProps({
   options: Array,
   title: String,
+  custom: Boolean,
 });
-const model = ref(props.options.length > 0 ? props.options[0] : "");
 const emits = defineEmits(["filterSelect"]);
-watch(model, (newValue) => {
-  emits("filterSelect", newValue);
-});
+const select = (value) => {
+  inputSelected.value = value;
+  emits("filterSelect", inputSelected.value);
+};
+const inputSelected = ref(props.options[0]);
+watch(
+  () => props.custom,
+  (newValue) => {
+    if (newValue) {
+      inputSelected.value = props.options[6];
+    }
+  }
+);
+emits("filterSelect", inputSelected.value);
+
 </script>
 <style scoped>
 .custom {

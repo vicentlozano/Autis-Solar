@@ -14,7 +14,7 @@ import BasicCalendar from "./BasicCalendar.vue";
 const props = defineProps({
   intervalOptions: [Object, String],
 });
-const emits = defineEmits(['dateToSearch']);
+const emits = defineEmits(["dateSelected"]);
 const dateRange = ref("");
 const model = ref({ from: "2020/07/08", to: "2020/07/17" });
 
@@ -25,6 +25,9 @@ watch(
   },
   { immediate: true }
 );
+watch(dateRange, (newVal) => {
+  emits("dateSelected", dateRange.value);
+});
 
 const setDateRange = (range) => {
   dateRange.value = range;

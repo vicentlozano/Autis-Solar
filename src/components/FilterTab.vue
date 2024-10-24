@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watch } from "vue";
+import { ref, computed } from "vue";
 import FilterBasic from "./FilterBasic.vue";
 import FilterDateTime from "./FilterDateTime.vue";
 import SearchFilter from "./SearchFilter.vue";
@@ -36,7 +36,9 @@ import ToggleField from "./ToggleField.vue";
 const options = ["pepe", "maria", "jose"];
 const title = "Team";
 const filterBasicValue = ref("");
-const filterDateTimeValue = ref("");
+const filterDateTimeValue = ref(
+  new Date().toISOString().slice(0, 10).replace(/-/g, "/")
+);
 const searchFilterValue = ref("");
 const toggleValue = ref(false);
 const updateSelect = (newValue) => {
@@ -51,33 +53,26 @@ const updateSearch = (newValue) => {
 const updateToggle = (newValue) => {
   toggleValue.value = newValue;
 };
+
+const combinedFilters = computed(() => ({
+  filterBasic: filterBasicValue.value,
+  filterDateTime: filterDateTimeValue.value,
+  searchFilter: searchFilterValue.value,
+  toggle: toggleValue.value,
+}));
+
 const toQuery = () => {
   console.log(
     "Filter Basic Value:",
-    filterBasicValue.value,
+    combinedFilters.value.filterBasic,
     "Filter DateTime Value:",
-    filterDateTimeValue.value,
+    combinedFilters.value.filterDateTime,
     "Search Filter Value:",
-    searchFilterValue.value,
+    combinedFilters.value.searchFilter,
     "Toggle Value:",
-    toggleValue.value
+    combinedFilters.value.toggle
   );
 };
-watch(
-  [filterBasicValue, filterDateTimeValue, searchFilterValue, toggleValue],
-  ([newFilterBasic, newFilterDateTime, newSearchFilter, newToggleValue]) => {
-    console.log(
-      "Filter Basic Value:",
-      newFilterBasic,
-      "Filter DateTime Value:",
-      newFilterDateTime,
-      "Search Filter Value:",
-      newSearchFilter,
-      "Toggle Value:",
-      newToggleValue
-    );
-  }
-);
 </script>
 <style scoped>
 .filter-card {

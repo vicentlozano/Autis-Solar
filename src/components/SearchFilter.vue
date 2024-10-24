@@ -6,6 +6,7 @@
       outlined
       v-model="text"
       label="Search"
+      @update:model-value="changeText"
       dense
     >
       <template v-slot:append>
@@ -21,12 +22,12 @@
   </div>
 </template>
 <script setup>
-import { ref, defineEmits,watch } from "vue";
+import { ref, defineEmits} from "vue";
 const text = ref("");
 const emits = defineEmits(["charactersToSearch"]);
-watch(text, (newValue) =>{
-emits('charactersToSearch',newValue)
-});
+const changeText = () => {
+  emits('charactersToSearch',text.value)
+}
 </script>
 <style scoped>
 .custom {
