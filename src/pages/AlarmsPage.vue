@@ -1,6 +1,13 @@
 <template>
   <SimpleTab :columns="columns" :rows="rows" :title="title" />
-  <FilterTab :optionsSelectOne="teamOptions" :titleSelectOne="teamTitle" :optionsRangeInterval="rangeIntervals" :titleRangeInterval="titleRange"/>
+  <FilterTab
+    :optionsSelectOne="teamOptions"
+    :titleSelectOne="teamTitle"
+    :optionsRangeInterval="rangeIntervals"
+    :titleRangeInterval="titleRange"
+    :rangeCalendar="isRangeCalendar"
+    :isSearch="true"
+  />
 </template>
 <script setup>
 import { ref } from "vue";
@@ -19,8 +26,8 @@ const rangeIntervals = [
   "Last Month",
   "Custom",
 ];
-const titleRange = 'intervals';
-
+const titleRange = "intervals";
+const isRangeCalendar = true;
 
 const columns = [
   {

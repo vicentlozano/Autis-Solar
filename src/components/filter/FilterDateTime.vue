@@ -10,6 +10,7 @@
       :intervalOptions="intervalSelected"
       @dateRangeSelected="setRangeData"
       @isCustom="customDateOrNot"
+      :isRange="isRange"
     />
   </div>
 </template>
@@ -21,6 +22,7 @@ import BasicCalendar from "./BasicCalendar.vue";
 const props = defineProps({
   intervals: Array,
   title: String,
+  isRange: Boolean,
 })
 const emits = defineEmits(["dateToSearch"]);
 const intervalSelected = ref(

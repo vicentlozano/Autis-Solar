@@ -10,7 +10,7 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-            <q-date v-model="localDateRange" range @update:model-value="test">
+            <q-date v-model="localDateRange" :range="isRange" @update:model-value="test">
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="Close" color="primary" flat />
               </div>
@@ -30,6 +30,7 @@ const props = defineProps({
     type: [Object, String],
     default: () => new Date().toISOString().slice(0, 10).replace(/-/g, "/"),
   },
+  isRange: Boolean,
 });
 
 const emits = defineEmits(["dateRangeSelected", "isCustom"]);
@@ -72,6 +73,11 @@ watch(
   padding-right: 1px;
 }
 .custom-input {
-  min-width: 220px;
+  min-width: 20px;
+}
+@media(max-width:550px){
+  .custom-input {
+  max-width: 150px;
+}
 }
 </style>

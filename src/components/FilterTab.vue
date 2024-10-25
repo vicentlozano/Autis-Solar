@@ -8,12 +8,28 @@
         @filterSelect="updateSelect"
       />
       <q-separator vertical inset class="custom-separator item2" />
-      <FilterDateTime class="item3" @dateToSearch="updateDate" :intervals="optionsRangeInterval" :title="titleRangeInterval"/>
+      <FilterDateTime
+        class="item3"
+        @dateToSearch="updateDate"
+        :intervals="optionsRangeInterval"
+        :title="titleRangeInterval"
+        :isRange="rangeCalendar"
+      />
       <q-separator vertical inset class="custom-separator item4" />
-      <SearchFilter class="item5" @charactersToSearch="updateSearch" />
+      <SearchFilter
+        class="item5"
+        @charactersToSearch="updateSearch"
+        v-if="isSearch"
+      />
+      <q-separator
+        vertical
+        inset
+        class="custom-separator item2"
+        v-if="isSearch"
+      />
 
-      <div class="botton-toggle item6 q-pa-md">
-        <ToggleField @booleanSelect="updateToggle" />
+      <div class="botton-toggle item6 q-pa-xs">
+        <ToggleField @booleanSelect="updateToggle" class="toggle" />
         <q-btn
           class="custom-button"
           outline
@@ -28,7 +44,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed,defineProps } from "vue";
+import { ref, computed, defineProps } from "vue";
 import FilterBasic from "./filter/FilterBasic.vue";
 import FilterDateTime from "./filter/FilterDateTime.vue";
 import SearchFilter from "./filter/SearchFilter.vue";
@@ -39,8 +55,10 @@ const props = defineProps({
   optionsSelectOne: Array,
   titleSelectOne: String,
   optionsRangeInterval: Array,
-  titleRangeInterval: String
-})
+  titleRangeInterval: String,
+  rangeCalendar: Boolean,
+  isSearch: Boolean,
+});
 
 const filterBasicValue = ref("");
 const filterDateTimeValue = ref(
@@ -83,18 +101,17 @@ const toQuery = () => {
 </script>
 <style scoped>
 .filter-card {
-  display: grid;
-  grid-template-columns:
-    minmax(200px, 1fr) 0.000001fr minmax(400px, 2fr) 0.0000001fr minmax(
-      200px,
-      1fr
-    )
-    minmax(100px, 1fr);
-  grid-auto-rows: auto;
-  grid-auto-flow: row dense;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  gap: 0rem;
+  gap: 1rem;
+}
+
+.item {
+  flex: 1 1 200px; /* Crece y se encoge con un tamaño base de 200px */
+  min-width: 200px; /* Ancho mínimo */
+  max-width: 400px; /* Ancho máximo */
 }
 
 .botton-toggle {
@@ -104,6 +121,7 @@ const toQuery = () => {
   align-items: center;
   gap: 1px;
 }
+
 .custom-separator {
   display: flex;
   justify-content: center;
@@ -111,51 +129,44 @@ const toQuery = () => {
   width: 0.1px;
   background-color: var(--q-primary);
 }
+
 .custom-button {
   min-width: 100px;
-  max-width: 220;
+  max-width: 220px;
   max-height: 40px;
 }
-
 @media (max-width: 1350px) {
   .filter-card {
-    display: grid;
-    grid-template-columns: auto 0.00001fr auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "item1 item2 item3"
-      "item5 item4 item6";
-    gap: 0.1rem;
-  }
-
-  .item1 {
-    grid-area: item1;
-  }
-
-  .item2 {
-    grid-area: item2;
-  }
-
-  .item3 {
-    grid-area: item3;
-  }
-
-  .item4 {
-    grid-area: item4;
-  }
-
-  .item5 {
-    grid-area: item5;
-  }
-
-  .item6 {
-    grid-area: item6;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
   }
 
   .botton-toggle {
     flex-direction: row;
   }
+
+  .toggle {
+    margin-right: 10px;
+  }
+
+  .custom-separator {
+    display: none;
+  }
 }
-@media (max-width: 800px) {
+@media (max-width: 1056px) {
+  .filter-card {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .botton-toggle {
+    flex-direction: row;
+  }
+  .toggle {
+    margin-right: 10px;
+  }
+  .custom-separator {
+    display: none;
+  }
 }
 </style>

@@ -22,12 +22,12 @@
   </div>
 </template>
 <script setup>
-import { ref, defineEmits} from "vue";
+import { ref, defineEmits } from "vue";
 const text = ref("");
 const emits = defineEmits(["charactersToSearch"]);
 const changeText = () => {
-  emits('charactersToSearch',text.value)
-}
+  emits("charactersToSearch", text.value);
+};
 </script>
 <style scoped>
 .custom {
@@ -37,5 +37,11 @@ const changeText = () => {
 }
 .custom-input {
   min-width: 220px;
+}
+@media (max-width: 550px) {
+  .custom-input {
+    max-width: 112px;
+    min-width: none;
+  }
 }
 </style>

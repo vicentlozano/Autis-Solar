@@ -53,4 +53,9 @@ emits("filterSelect", inputSelected.value);
 .custom-select {
   min-width: 220px;
 }
+@media(max-width:550px){
+  .custom-select {
+  min-width: 150px;
+}
+}
 </style>

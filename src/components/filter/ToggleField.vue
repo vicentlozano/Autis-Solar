@@ -5,6 +5,7 @@
     color="green"
     label="Historic Mode"
     unchecked-icon="clear"
+    class="toggle"
   />
 </template>
 <script setup>
