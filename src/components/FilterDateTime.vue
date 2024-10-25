@@ -80,7 +80,10 @@ const setRangeOption = (value) => {
       to.setHours(23, 59, 59, 999);
       break;
     default:
-      from = to = today;
+    intervalSelected.value = new Date()
+        .toISOString()
+        .slice(0, 10)
+        .replace(/-/g, "/");
   }
 
   // Formatea las fechas para que usen '/'

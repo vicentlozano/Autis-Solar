@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, computed } from "vue";
+import { ref, defineProps, defineEmits, watch } from "vue";
 
 const props = defineProps({
   intervalOptions: {
@@ -57,6 +57,15 @@ const test = (value) => {
   custom.value = true;
   emits("isCustom", custom.value);
 };
+watch(
+  () => props.intervalOptions,
+  (newValue) => {
+    localDateRange.value = newValue;
+    typeof newValue === 'string'
+      ? (dateRangeDisplay.value = newValue)
+      : (dateRangeDisplay.value = `${newValue.from} - ${newValue.to}`);
+  }
+);
 </script>
 
 <style scoped>
