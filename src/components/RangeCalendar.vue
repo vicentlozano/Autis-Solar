@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref, defineProps, watch, defineEmits } from "vue";
-import BasicCalendar from "./BasicCalendar.vue";
+import BasicCalendar from "./Filter/BasicCalendar.vue";
 
 const props = defineProps({
   intervalOptions: [Object, String],

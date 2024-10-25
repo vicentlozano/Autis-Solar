@@ -2,7 +2,7 @@
   <div class="horizontal">
     <FilterBasic
       :options="intervals"
-      :title="'Intervals'"
+      :title="title"
       :custom="custom"
       @filterSelect="setRangeOption"
     />
@@ -15,24 +15,19 @@
 </template>
 
 <script setup>
-import { ref, defineEmits, computed, watch } from "vue";
+import { ref, defineEmits, defineProps, watch } from "vue";
 import FilterBasic from "./FilterBasic.vue";
 import BasicCalendar from "./BasicCalendar.vue";
-
+const props = defineProps({
+  intervals: Array,
+  title: String,
+})
 const emits = defineEmits(["dateToSearch"]);
 const intervalSelected = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
 );
 const custom = ref(false);
-const intervals = ref([
-  "Today",
-  "Yesterday",
-  "This week",
-  "Last week",
-  "This month",
-  "Last Month",
-  "Custom",
-]);
+
 
 
 const setRangeData = (value) => {
@@ -97,7 +92,6 @@ const setRangeOption = (value) => {
 };
 watch(intervalSelected, (newValue) => {
   emits("dateToSearch", intervalSelected.value);
-  console.log(intervalSelected.value);
 });
 </script>
 

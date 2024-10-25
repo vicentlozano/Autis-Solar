@@ -43,7 +43,6 @@
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { Dark } from "quasar";
-import EssentialLink from "components/EssentialLink.vue";
 import NavegationMenu from "src/components/NavegationMenu.vue";
 
 defineOptions({
@@ -210,7 +209,5 @@ function toggleLeftDrawer() {
 .center {
   text-align: center;
 }
-body.body--dark {
-  background-color: #1c1c1e;
-}
+
 </style>

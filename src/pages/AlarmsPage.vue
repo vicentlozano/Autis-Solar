@@ -1,6 +1,6 @@
 <template>
   <SimpleTab :columns="columns" :rows="rows" :title="title" />
-  <FilterTab />
+  <FilterTab :optionsSelectOne="teamOptions" :titleSelectOne="teamTitle" :optionsRangeInterval="rangeIntervals" :titleRangeInterval="titleRange"/>
 </template>
 <script setup>
 import { ref } from "vue";
@@ -8,6 +8,19 @@ import SimpleTab from "src/components/SimpleTab.vue";
 import FilterTab from "src/components/FilterTab.vue";
 const currentDate = ref(new Date().toLocaleString());
 const title = "Active Warnings";
+const teamOptions = ["Vicent", "Marc", "Carles"];
+const teamTitle = "Team";
+const rangeIntervals = [
+  "Today",
+  "Yesterday",
+  "This week",
+  "Last week",
+  "This month",
+  "Last Month",
+  "Custom",
+];
+const titleRange = 'intervals';
+
 
 const columns = [
   {
@@ -91,6 +104,4 @@ const rows = [
 ];
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

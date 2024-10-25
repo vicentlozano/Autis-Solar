@@ -47,7 +47,6 @@ const dateRangeDisplay = ref(
 
 const test = (value) => {
   localDateRange.value = value;
-  console.log(value);
   if (typeof localDateRange.value === "string") {
     dateRangeDisplay.value = localDateRange.value;
   } else {

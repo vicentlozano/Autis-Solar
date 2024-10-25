@@ -3,12 +3,12 @@
     <q-card bordered flat class="filter-card">
       <FilterBasic
         class="item1"
-        :options="options"
-        :title="title"
+        :options="optionsSelectOne"
+        :title="titleSelectOne"
         @filterSelect="updateSelect"
       />
       <q-separator vertical inset class="custom-separator item2" />
-      <FilterDateTime class="item3" @dateToSearch="updateDate" />
+      <FilterDateTime class="item3" @dateToSearch="updateDate" :intervals="optionsRangeInterval" :title="titleRangeInterval"/>
       <q-separator vertical inset class="custom-separator item4" />
       <SearchFilter class="item5" @charactersToSearch="updateSearch" />
 
@@ -28,13 +28,20 @@
   </div>
 </template>
 <script setup>
-import { ref, computed } from "vue";
-import FilterBasic from "./FilterBasic.vue";
-import FilterDateTime from "./FilterDateTime.vue";
-import SearchFilter from "./SearchFilter.vue";
-import ToggleField from "./ToggleField.vue";
-const options = ["pepe", "maria", "jose"];
-const title = "Team";
+import { ref, computed,defineProps } from "vue";
+import FilterBasic from "./filter/FilterBasic.vue";
+import FilterDateTime from "./filter/FilterDateTime.vue";
+import SearchFilter from "./filter/SearchFilter.vue";
+import ToggleField from "./filter/ToggleField.vue";
+
+// ---Props---
+const props = defineProps({
+  optionsSelectOne: Array,
+  titleSelectOne: String,
+  optionsRangeInterval: Array,
+  titleRangeInterval: String
+})
+
 const filterBasicValue = ref("");
 const filterDateTimeValue = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
