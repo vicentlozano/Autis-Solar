@@ -36,6 +36,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer class="transparent-footer"> Autis</q-footer>
   </q-layout>
 </template>
 

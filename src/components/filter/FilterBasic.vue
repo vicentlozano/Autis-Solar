@@ -21,13 +21,14 @@
   </div>
 </template>
 <script setup>
-import { ref, defineProps, defineEmits, watch } from "vue";
+import { ref, defineProps, defineEmits, watch, computed } from "vue";
 const props = defineProps({
   options: Array,
   title: String,
   custom: Boolean,
 });
 const emits = defineEmits(["filterSelect"]);
+const isCustom = ref(false);
 const select = (value) => {
   inputSelected.value = value;
   emits("filterSelect", inputSelected.value);
@@ -35,14 +36,15 @@ const select = (value) => {
 const inputSelected = ref(props.options[0]);
 watch(
   () => props.custom,
-  (newValue) => {
-    if (newValue) {
+  () => {
+    if (props.custom) {
       inputSelected.value = props.options[6];
+      console.log(`eevento recibido en ocmponente final ${props.custom}`);
     }
   }
 );
-emits("filterSelect", inputSelected.value);
 
+emits("filterSelect", inputSelected.value);
 </script>
 <style scoped>
 .custom {
@@ -53,9 +55,9 @@ emits("filterSelect", inputSelected.value);
 .custom-select {
   min-width: 220px;
 }
-@media(max-width:550px){
+@media (max-width: 550px) {
   .custom-select {
-  min-width: 150px;
-}
+    min-width: 150px;
+  }
 }
 </style>

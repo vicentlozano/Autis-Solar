@@ -10,7 +10,11 @@
       <template v-slot:prepend>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-            <q-date v-model="localDateRange" :range="isRange" @update:model-value="test">
+            <q-date
+              v-model="localDateRange"
+              :range="isRange"
+              @update:model-value="test"
+            >
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="Close" color="primary" flat />
               </div>
@@ -46,6 +50,17 @@ const dateRangeDisplay = ref(
     : `${localDateRange.value.from} - ${localDateRange.value.to}`
 );
 
+watch(
+  () => props.intervalOptions,
+  (newValue) => {
+    localDateRange.value = newValue;
+    typeof newValue === "string"
+      ? (dateRangeDisplay.value = newValue)
+      : (dateRangeDisplay.value = `${newValue.from} - ${newValue.to}`);
+    custom.value = false;
+    emits("isCustom", custom.value);
+  }
+);
 const test = (value) => {
   localDateRange.value = value;
   if (typeof localDateRange.value === "string") {
@@ -53,19 +68,12 @@ const test = (value) => {
   } else {
     dateRangeDisplay.value = `${localDateRange.value.from} - ${localDateRange.value.to}`;
   }
-  emits("dateRangeSelected", localDateRange.value);
   custom.value = true;
+
+  emits("dateRangeSelected", localDateRange.value);
   emits("isCustom", custom.value);
+  console.log(`emit de componente base ${custom.value}`);
 };
-watch(
-  () => props.intervalOptions,
-  (newValue) => {
-    localDateRange.value = newValue;
-    typeof newValue === 'string'
-      ? (dateRangeDisplay.value = newValue)
-      : (dateRangeDisplay.value = `${newValue.from} - ${newValue.to}`);
-  }
-);
 </script>
 
 <style scoped>
@@ -75,9 +83,9 @@ watch(
 .custom-input {
   min-width: 20px;
 }
-@media(max-width:550px){
+@media (max-width: 550px) {
   .custom-input {
-  max-width: 150px;
-}
+    max-width: 150px;
+  }
 }
 </style>

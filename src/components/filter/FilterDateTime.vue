@@ -23,20 +23,19 @@ const props = defineProps({
   intervals: Array,
   title: String,
   isRange: Boolean,
-})
+});
 const emits = defineEmits(["dateToSearch"]);
 const intervalSelected = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
 );
 const custom = ref(false);
 
-
-
 const setRangeData = (value) => {
   intervalSelected.value = value;
 };
 const customDateOrNot = (isCustom) => {
   custom.value = isCustom;
+  console.log(`recibiendo el evento en filterDattime${isCustom}`);
 };
 
 const setRangeOption = (value) => {
@@ -70,6 +69,12 @@ const setRangeOption = (value) => {
       to = today;
       to.setHours(23, 59, 59, 999);
       break;
+    case "Custom":
+      intervalSelected.value = new Date()
+        .toISOString()
+        .slice(0, 10)
+        .replace(/-/g, "/");
+      return;
     case "Last Month":
       from = new Date(today.getFullYear(), today.getMonth() - 1, 1);
       from.setHours(23, 59, 59, 999);
@@ -77,7 +82,7 @@ const setRangeOption = (value) => {
       to.setHours(23, 59, 59, 999);
       break;
     default:
-    intervalSelected.value = new Date()
+      intervalSelected.value = new Date()
         .toISOString()
         .slice(0, 10)
         .replace(/-/g, "/");
