@@ -22,6 +22,7 @@ const props = defineProps({
   title: String,
 });
 const visible = ref(true);
+
 </script>
 
 <style scoped>
@@ -41,6 +42,7 @@ const visible = ref(true);
 }
 
 :deep(.custom-table td) {
+  width: 200px;
 }
 .table-title {
   margin-bottom: 1rem;

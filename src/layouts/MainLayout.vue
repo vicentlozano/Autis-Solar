@@ -11,7 +11,9 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> {{ pageTitle || company }} </q-toolbar-title>
+        <q-toolbar-title class="center-title">
+          {{ pageTitle || company }}
+        </q-toolbar-title>
 
         <q-btn
           flat
@@ -216,5 +218,8 @@ function toggleLeftDrawer() {
   text-align: center;
   font-size: 2em;
   font-weight: bold;
+}
+.center-title {
+  padding-left: 8rem;
 }
 </style>
