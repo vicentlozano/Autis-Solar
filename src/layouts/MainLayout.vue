@@ -55,6 +55,7 @@ const company = "Autis";
 const darkMode = ref(Dark.isActive);
 const route = useRoute();
 const pageTitle = ref(route.name);
+Dark.set(true);
 const menuList = [
   {
     icon: "home",
@@ -187,7 +188,7 @@ watch(route, (newRoute) => {
 });
 const leftDrawerOpen = ref(false);
 const toggleDarkMode = () => {
-  Dark.set(!darkMode.value);
+  Dark.set(darkMode.value);
   darkMode.value = !darkMode.value;
 };
 
@@ -210,5 +211,10 @@ function toggleLeftDrawer() {
 .center {
   text-align: center;
 }
-
+.transparent-footer {
+  background-color: transparent;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
 </style>
