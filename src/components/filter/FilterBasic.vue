@@ -60,4 +60,5 @@ emits("filterSelect", inputSelected.value);
     min-width: 150px;
   }
 }
+
 </style>
