@@ -25,7 +25,7 @@
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
+      <q-list class="menu-text">
         <!-- <EssentialLink
           v-for="link in linksList"
           :key="link.title"
@@ -233,5 +233,8 @@ box-sizing: border-box;
 }
 .center-title {
   padding-left: 8rem;
+}
+.menu-text {
+  font-size: 1.2em;
 }
 </style>

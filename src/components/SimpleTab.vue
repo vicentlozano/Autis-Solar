@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <h4 class="table-title text-primary">{{ title }}</h4>
+    <h4 class="table-title ">{{ title }}</h4>
     <q-table
       class="custom-table"
       bordered
@@ -47,6 +47,11 @@ const visible = ref(true);
 .table-title {
   margin-bottom: 1rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
+  width: 100%;
+  color: oklch(60.41% 0.1644 43.11);
+  border: 2px solid oklch(60.41% 0.1644 43.11);
+  border-radius: 20px;
 }
+
 </style>
