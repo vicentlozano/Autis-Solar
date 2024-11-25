@@ -208,7 +208,7 @@ box-sizing: border-box;
 }
 .normalize{
   width: 100%;
-  height: 100dvh;
+  height: auto;
 }
 .header{
 }

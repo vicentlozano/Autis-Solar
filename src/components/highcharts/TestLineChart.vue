@@ -1,81 +1,107 @@
 <template>
   <div class="q-pa-md">
     <q-card bordered flat class="filter-card">
-      <h5 class="title">LineChart</h5>
-      <section class="charts">
-        <Chart :options="chartOptions"></Chart>
-      </section>
+      <highcharts
+        :options="chartOptions"
+        class="highcharts-container"
+      ></highcharts>
     </q-card>
   </div>
 </template>
 
 <script setup>
-import { Chart } from "highcharts-vue";
+import { ref, computed, defineProps,watch } from "vue";
+import { Dark } from "quasar";
+const props = defineProps({
+  type: String,
+  title: String,
+  categories: Array,
+  labelY: String,
+  series: Array,
+});
 
-const chartOptions = {
+const darkMode = ref(Dark.isActive);
+watch(
+  () => Dark.isActive,
+  (newDarkMode) => {
+    darkMode.value = newDarkMode; // Actualizamos el valor de darkMode cuando cambie el estado de Dark.isActive
+  }
+);
+
+const textColor = computed(() => {
+  if (darkMode.value) {
+    console.log('white');
+
+    return "white";
+  } else {
+    console.log('black');
+
+    return "black";
+  }
+});
+const chartOptions = ref({
   chart: {
-    type: "bar",
+    type: props.type,
     backgroundColor: "transparent",
   },
   title: {
-    text: "My First Highcharts Chart in Vue.js",
+    text: props.title,
     style: {
-      color: "white", // Cambia el color del título
+      color: textColor,
     },
   },
   xAxis: {
-    categories: ["Apples", "Bananas", "Oranges"],
+    categories: props.categories,
     labels: {
       style: {
-        color: "white", // Cambia el color de las etiquetas del eje X
+        color: textColor,
       },
     },
   },
   yAxis: {
     title: {
-      text: "Fruit eaten",
+      text: props.labelY,
       style: {
-        color: "white", // Cambia el color del título del eje Y
+        color: textColor,
       },
     },
     labels: {
       style: {
-        color: "white", // Cambia el color de las etiquetas del eje Y
+        color: textColor,
       },
     },
   },
   legend: {
     itemStyle: {
-      color: "white", // Cambia el color de los elementos de la leyenda
+      color: textColor,
     },
   },
-  series: [
-    {
-      name: "Jane",
-      data: [1, 0, 4],
-      // No se necesita `style` aquí porque Highcharts automáticamente adapta los datos
-    },
-    {
-      name: "John",
-      data: [5, 7, 3],
-    },
-  ],
-};
+  series: props.series,
+});
 </script>
 
 <style scoped>
-.filter-card {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-}
-.title {
-  text-align: center;
-  padding: 1rem;
-  margin: 0;
+.q-pa-md {
+  width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
+.filter-card {
+  display: grid;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 100%; /* Previene desbordamientos */
+  box-sizing: border-box;
+  height: 100%; /* Asegura que el contenedor ocupe el 100% de la altura disponible */
+  max-height: 100%;
+  align-items: center;
+}
+
+.highcharts-container {
+  width: 100%; /* Obliga al gráfico a ocupar todo el ancho del contenedor */
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
 </style>
