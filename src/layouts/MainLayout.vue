@@ -38,7 +38,6 @@
     <q-page-container class="normalize">
       <router-view />
     </q-page-container>
-    <q-footer class="transparent-footer"> Autis</q-footer>
   </q-layout>
 </template>
 
@@ -204,19 +203,18 @@ function toggleLeftDrawer() {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 *{
-box-sizing: border-box;
+box-sizing: border-box !important;
 }
 .normalize{
   width: 100%;
   height: auto;
 }
-.header{
-}
+
 .globalStyle {
   font-family: "Roboto", sans-serif; /* Aplicar la fuente de Material Design */
   display: grid;
   min-height: 100dvh;
-  grid-auto-rows: auto 1fr auto;
+  grid-auto-rows: auto 1fr;
 }
 .label {
   font-weight: bolder;
@@ -225,16 +223,10 @@ box-sizing: border-box;
 .center {
   text-align: center;
 }
-.transparent-footer {
-  background-color: transparent;
-  text-align: center;
-  font-size: 2em;
-  font-weight: bold;
-}
 .center-title {
-  padding-left: 8rem;
+  padding-left: 7rem;
 }
 .menu-text {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 </style>

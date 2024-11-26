@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps,watch } from "vue";
+import { ref, computed, defineProps, watch } from "vue";
 import { Dark } from "quasar";
 const props = defineProps({
   type: String,
@@ -30,11 +30,11 @@ watch(
 
 const textColor = computed(() => {
   if (darkMode.value) {
-    console.log('white');
+    console.log("white");
 
     return "white";
   } else {
-    console.log('black');
+    console.log("black");
 
     return "black";
   }
@@ -85,6 +85,7 @@ const chartOptions = ref({
   width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
   max-width: 100%;
   height: 100%;
+  max-height: 100%;
   box-sizing: border-box;
 }
 
@@ -103,5 +104,8 @@ const chartOptions = ref({
   height: 100%;
   padding: 1rem;
   box-sizing: border-box;
+}
+* {
+  box-sizing: border-box !important;
 }
 </style>
