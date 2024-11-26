@@ -62,7 +62,7 @@ const menuList = [
     icon: "home",
     label: "Home",
     separator: true,
-    link: "/",
+    link: "/Home",
   },
   {
     icon: "settings",

@@ -95,13 +95,12 @@ const chartOptions = ref({
   max-width: 100%; /* Previene desbordamientos */
   box-sizing: border-box;
   height: 100%; /* Asegura que el contenedor ocupe el 100% de la altura disponible */
-  max-height: 100%;
   align-items: center;
 }
 
 .highcharts-container {
   width: 100%; /* Obliga al gráfico a ocupar todo el ancho del contenedor */
-  height: 100%;
+  height: 98%;
   padding: 1rem;
   box-sizing: border-box;
 }
