@@ -35,13 +35,15 @@ const listequipment = ["PLC 2", "Alternador", "Rele 3"];
   grid-template-columns: auto 5fr auto;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: auto;                        
   gap: 1rem;
+  background-image: linear-gradient(240deg, orange,rgba(255, 0, 0, 0.685),orange);
   box-sizing: border-box;
   padding: 1rem;
 }
 .error-image {
   animation: alert 2s infinite ease-in-out;
+  z-index: 1;
 }
 .center {
   text-align: center;
@@ -63,12 +65,15 @@ const listequipment = ["PLC 2", "Alternador", "Rele 3"];
 @keyframes alert {
   0% {
     transform: scale(1);
+    opacity: 0;
   }
   50% {
     transform: scale(1.3);
+    opacity: 1;
   }
   100% {
     transform: scale(1);
+    opacity: 0;
   }
 }
 </style>
