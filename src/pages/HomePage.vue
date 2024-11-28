@@ -2,7 +2,7 @@
   <div
     :class="{
       'q-pa-md normalize': isAlarm,
-      'q-pa-md normalize-grid': !isActive,
+      'q-pa-md normalize-grid': !isAlarm,
     }"
   >
     <section v-if="isAlarm" class="alarm">
@@ -98,10 +98,6 @@ const serieArray = [
   min-height: 100%;
   width: 100%;
 }
-.first {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
 
 .graph {
   display: grid;
@@ -112,6 +108,7 @@ const serieArray = [
   align-items: center;
   width: 100%;
   gap: 1rem;
+  min-height: 400px;
 }
 
 .weather {
@@ -145,6 +142,9 @@ const serieArray = [
   .weather {
     grid-column: span 3;
   }
+  map{
+    height: 400px;
+  }
 }
 @media (max-width: 1010px) {
   .graph {
@@ -153,7 +153,10 @@ const serieArray = [
     height: auto;
   }
   .line-graph {
-    height: 300px;
+    height: 400px;
+  }
+  .map{
+    height: 400px;
   }
 }
 @media (max-width: 700px) {
