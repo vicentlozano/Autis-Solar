@@ -87,6 +87,7 @@ const chartOptions = ref({
   height: 100%;
   max-height: 100%;
   box-sizing: border-box;
+  padding: 0;
 }
 
 .filter-card {

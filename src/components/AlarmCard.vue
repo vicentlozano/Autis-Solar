@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md normalize">
     <q-card bordered flat class="filter-card">
       <img
         alt="error-icon"
@@ -30,6 +30,11 @@ const listequipment = ["PLC 2", "Alternador", "Rele 3"];
 </script>
 
 <style scoped>
+.normalize {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
 .filter-card {
   display: grid;
   grid-template-columns: auto 5fr auto;

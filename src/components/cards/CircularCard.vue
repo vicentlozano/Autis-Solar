@@ -1,7 +1,7 @@
 <template>
-  <div class="circular" :style="{ '--border-color': color }">
+  <div class="circular" :style="{ '--dynamic-color': color }">
     <p class="value">{{ value }}</p>
-    <p class="title">{{ unit }}</p>
+    <p class="unit">{{ unit }}</p>
   </div>
 </template>
 
@@ -29,8 +29,8 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   border-radius: 50% !important;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border: 2px solid #109587;
   box-sizing: border-box;
   aspect-ratio: 1;
@@ -44,16 +44,17 @@ const props = defineProps({
 .value{
   font-size: 1.5rem;
   text-align: center;
-  color: #9C27B0;
+  font-weight: bold;
+  color: var(--dynamic-color, white);
   margin: 0;
   padding: 0;
 }
 
- .title {
+ .unit {
   font-size: 01rem;
   text-align: center;
   margin: 0;
-  color: #9C27B0;
+  color: var(--dynamic-color, white);
   padding: 0;
 
 
@@ -68,7 +69,7 @@ const props = defineProps({
 
   }
   50% {
-    border: 2px solid #9C27B0;
+    border: 2px solid var(--dynamic-color, white);;
 
     
   }

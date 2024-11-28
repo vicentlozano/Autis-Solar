@@ -1,20 +1,55 @@
 <template>
-  <section v-if="isAlarm" class="alarm">
-    <AlarmCard />
-  </section>
-  <section class="weather">
-    <WeatherCard3 :city="'Gandia'" />
-  </section>
-  <section class="data-cards">
-    <DataCard
-      :title="title"
-      :icon="icon"
-      :data="data"
-      :data-ext="dataExt"
-      :title-data="titleData"
-      :widgets="widgets"
-    />
-  </section>
+  <div
+    :class="{
+      'q-pa-md normalize': isAlarm,
+      'q-pa-md normalize-grid': !isActive,
+    }"
+  >
+    <section v-if="isAlarm" class="alarm">
+      <AlarmCard />
+    </section>
+    <section class="data-cards">
+      <WeatherCard3 :city="'Gandia'" class="weather" />
+      <DataCard
+        :title="title"
+        :icon="icon"
+        :data="data"
+        :data-ext="dataExt"
+        :title-data="titleData"
+        :widgets="widgets"
+        :color="'purple'"
+      />
+      <DataCard
+        :title="title"
+        :icon="icon"
+        :data="data"
+        :data-ext="dataExt"
+        :title-data="titleData"
+        :widgets="widgets"
+        :color="'blue'"
+      />
+      <DataCard
+        :title="title"
+        :icon="icon"
+        :data="data"
+        :data-ext="dataExt"
+        :title-data="titleData"
+        :widgets="widgets"
+        :color="'green'"
+      />
+    </section>
+    <section class="graph">
+      <TestLineChart
+        :type="'column'"
+        :title="'LineChart'"
+        :categories="['Enero', 'Febrero', 'Marzo']"
+        :labelY="'kW'"
+        :series="serieArray"
+        class="line-graph"
+      />
+      <MapComponent class="map" />
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -22,8 +57,10 @@ import { ref } from "vue";
 import AlarmCard from "src/components/AlarmCard.vue";
 import WeatherCard3 from "src/components/weatherCards/WeatherCard3.vue";
 import DataCard from "src/components/cards/DataCard.vue";
+import TestLineChart from "src/components/highcharts/TestLineChart.vue";
+import MapComponent from "src/components/MapComponent.vue";
 
-const isAlarm = ref(true);
+const isAlarm = ref(false);
 const title = "Sistema 1";
 const icon = "/icons/sistemIcon.png";
 const data = ref(33.5);
@@ -33,14 +70,95 @@ const widgets = [
   { src: "/icons/iconLineChart.png", route: "/Alerts" },
   { src: "/icons/iconGaugeChart.png", route: "/Exploitation" },
 ];
+const serieArray = [
+  {
+    name: "Potencia Activa",
+    data: [1, 0, 4],
+  },
+  {
+    name: "Potencia Pasiva",
+    data: [5, 7, 3],
+  },
+];
 </script>
 
 <style scoped>
+.normalize {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+}
+.normalize-grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 0.6fr 1fr;
+  justify-items: center;
+  min-height: 100%;
+  width: 100%;
+}
+.first {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.graph {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
 .weather {
   width: 100%;
   padding: 1rem;
+  max-height: 400px;
 }
-.data-card{
+.data-cards {
   width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.alarm {
+  height: fit-content;
+}
+.map {
+  min-height: 200px;
+}
+
+@media (min-width: 1010px) and (max-width: 1360px) {
+  .data-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .weather {
+    grid-column: span 3;
+  }
+}
+@media (max-width: 1010px) {
+  .graph {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .line-graph {
+    height: 300px;
+  }
+}
+@media (max-width: 700px) {
+  .line-graph {
+    min-height: 100%;
+  }
 }
 </style>
