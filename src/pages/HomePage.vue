@@ -29,7 +29,6 @@
         :widgets="widgets"
         :color="'blue'"
         class="second-card"
-
       />
       <DataCard
         :title="title"
@@ -64,7 +63,7 @@ import DataCard from "src/components/cards/DataCard.vue";
 import TestLineChart from "src/components/highcharts/TestLineChart.vue";
 import MapComponent from "src/components/MapComponent.vue";
 
-const isAlarm = ref(false);
+const isAlarm = ref(true);
 const title = "Sistema 1";
 const icon = "/icons/sistemIcon.png";
 const data = ref(33.5);
@@ -92,14 +91,16 @@ const serieArray = [
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  max-height: 100%;
   width: 100%;
 }
 .normalize-grid {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 0.6fr 1fr;
+  grid-template-rows: 0.45fr 0.55fr;
   justify-items: center;
   min-height: 100%;
+  max-height: 100%;
   width: 100%;
 }
 
@@ -113,13 +114,13 @@ const serieArray = [
   width: 100%;
   gap: 1rem;
   min-height: 400px;
+  max-height: 45dvh;
 }
 
 .weather {
   width: 100%;
   padding: 1rem;
-  max-height: 400px;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 .data-cards {
   width: 100%;
@@ -141,27 +142,25 @@ const serieArray = [
 .map {
   min-height: 200px;
 }
-.third-card:hover{
+.third-card:hover {
   transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
 }
-.second-card:hover{
+.second-card:hover {
   transform: scale(1.04);
-
 }
-@media (min-width: 1361px){
-  
-  .weather:hover{
+@media (min-width: 1361px) {
+  .weather:hover {
     transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
   }
-  .first-card:hover{
+  .first-card:hover {
     transform: scale(1.04);
   }
-  .second-card:hover{
-  transform: scale(1.04);
-}
-.third-card:hover{
-  transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
-}
+  .second-card:hover {
+    transform: scale(1.04);
+  }
+  .third-card:hover {
+    transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+  }
 }
 @media (min-width: 1010px) and (max-width: 1360px) {
   .data-cards {
@@ -171,52 +170,69 @@ const serieArray = [
   .weather {
     grid-column: span 3;
   }
-  map{
+  map {
     height: 400px;
   }
 }
-@media (max-width: 1010px) {
+@media (min-width: 701px) and (max-width: 1010px) {
   .graph {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    height: auto;
+    grid-template-rows: 1fr 1fr;
+    max-height: none;
+  }
+  .normalize-grid {
+    grid-template-rows: 0.45fr 1.2fr;
   }
   .line-graph {
-    height: 400px;
+    height: 350px;
   }
-  .map{
-    height: 400px;
+  .map {
+    height: 350px;
   }
-  .weather:hover{
+  .weather:hover {
     transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
   }
-  .first-card:hover{
+  .first-card:hover {
     transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
   }
-  .second-card:hover{
+  .second-card:hover {
     transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
-}
-.third-card:hover{
-  transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
-}
+  }
+  .third-card:hover {
+    transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+  }
 }
 
 @media (max-width: 700px) {
   .line-graph {
     min-height: 100%;
   }
-  .weather:hover{
-    transform:scale(1.02);
-  }
-  .first-card:hover{
+  .weather:hover {
     transform: scale(1.02);
   }
-  .second-card:hover{
+  .first-card:hover {
     transform: scale(1.02);
+  }
+  .second-card:hover {
+    transform: scale(1.02);
+  }
+  .third-card:hover {
+    transform: scale(1.02);
+  }
+  .normalize-grid {
+    grid-template-rows: auto auto;
+  }
+  .graph {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fit,minmax(350px,1fr));
+    max-height: none;
+  }
+  .normalize-grid {
+    grid-template-rows: 0.45fr auto;
+  }
+  .map {
+    height: 350px;
+    padding: auto;
+  }
 }
-.third-card:hover{
-  transform: scale(1.02);
-}
-}
-
 </style>

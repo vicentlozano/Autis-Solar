@@ -42,6 +42,7 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   height: 100%;
+  max-height: 300px;
   border-radius: 12px;
   width: 100%;
   box-shadow:

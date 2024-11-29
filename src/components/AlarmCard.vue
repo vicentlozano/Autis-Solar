@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md normalize">
-    <q-card bordered flat class="filter-card">
+    <q-card bordered  class="filter-card">
       <img
         alt="error-icon"
         src="../assets/error-icon-30.png"
@@ -42,6 +42,9 @@ const listequipment = ["PLC 2", "Alternador", "Rele 3"];
   align-items: center;
   height: auto;                        
   gap: 1rem;
+  box-shadow:
+    rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
   background-image: linear-gradient(240deg, orange,rgba(255, 0, 0, 0.685),orange);
   box-sizing: border-box;
   padding: 1rem;

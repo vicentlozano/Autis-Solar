@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-card bordered flat class="filter-card">
+    <q-card bordered  class="filter-card">
       <highcharts
         :options="chartOptions"
         class="highcharts-container"
@@ -47,6 +47,9 @@ const chartOptions = ref({
       duration: 500, // Duración en milisegundos
     },
   },
+  credits: {
+    enabled: false // Esto elimina la marca de agua de Highcharts
+  },
   title: {
     text: props.title,
     style: {
@@ -91,6 +94,7 @@ const chartOptions = ref({
   max-height: 100%;
   box-sizing: border-box;
   padding: 0;
+  
 }
 
 .filter-card {
@@ -101,6 +105,9 @@ const chartOptions = ref({
   height: 100%; 
   border-radius: 12px;
   align-items: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .highcharts-container {

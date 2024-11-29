@@ -170,6 +170,7 @@ onMounted(async () => {
   align-items: center;
   width: 100%;
   height: 100%;
+  max-height: 300px;
   padding: 1rem;
   gap: 0.4rem;
   padding: 1rem 0rem 0.5rem 0rem;
