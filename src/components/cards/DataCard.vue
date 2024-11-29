@@ -89,11 +89,11 @@ const props = defineProps({
   border: 1px solid rgb(110, 103, 103);
 }
 .filter-card:hover {
-  transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(0.9);
+  transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
 }
 @media(max-width: 900px){
   .filter-card:hover {
-  transform:  scale(0.9);
+  transform:  scale(1.03);
 }
 }
 </style>

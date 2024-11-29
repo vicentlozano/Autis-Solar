@@ -18,6 +18,7 @@
         :title-data="titleData"
         :widgets="widgets"
         :color="'purple'"
+        class="first-card"
       />
       <DataCard
         :title="title"
@@ -27,6 +28,8 @@
         :title-data="titleData"
         :widgets="widgets"
         :color="'blue'"
+        class="second-card"
+
       />
       <DataCard
         :title="title"
@@ -36,6 +39,7 @@
         :title-data="titleData"
         :widgets="widgets"
         :color="'green'"
+        class="third-card"
       />
     </section>
     <section class="graph">
@@ -115,6 +119,7 @@ const serieArray = [
   width: 100%;
   padding: 1rem;
   max-height: 400px;
+  transition: transform 0.3s ease; 
 }
 .data-cards {
   width: 100%;
@@ -133,7 +138,28 @@ const serieArray = [
 .map {
   min-height: 200px;
 }
+.third-card:hover{
+  transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+}
+.second-card:hover{
+  transform: scale(1.04);
 
+}
+@media (min-width: 1361px){
+  
+  .weather:hover{
+    transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
+  }
+  .first-card:hover{
+    transform: scale(1.04);
+  }
+  .second-card:hover{
+  transform: scale(1.04);
+}
+.third-card:hover{
+  transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+}
+}
 @media (min-width: 1010px) and (max-width: 1360px) {
   .data-cards {
     grid-template-columns: 1fr 1fr 1fr;
@@ -159,9 +185,22 @@ const serieArray = [
     height: 400px;
   }
 }
+.weather:hover{
+    transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
+  }
+  .first-card:hover{
+    transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+  }
+  .second-card:hover{
+    transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
+}
+.third-card:hover{
+  transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
+}
 @media (max-width: 700px) {
   .line-graph {
     min-height: 100%;
   }
 }
+
 </style>
