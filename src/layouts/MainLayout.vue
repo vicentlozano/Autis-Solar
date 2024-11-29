@@ -53,10 +53,9 @@ defineOptions({
 
 const title = company + " Solar";
 const company = "Autis";
-const darkMode = ref(Dark.isActive);
+const darkMode = ref(!Dark.isActive);
 const route = useRoute();
 const pageTitle = ref(route.name);
-Dark.set(true);
 const menuList = [
   {
     icon: "home",

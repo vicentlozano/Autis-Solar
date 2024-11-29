@@ -24,7 +24,7 @@ const darkMode = ref(Dark.isActive);
 watch(
   () => Dark.isActive,
   (newDarkMode) => {
-    darkMode.value = newDarkMode; // Actualizamos el valor de darkMode cuando cambie el estado de Dark.isActive
+    darkMode.value = newDarkMode; 
   }
 );
 
@@ -43,6 +43,9 @@ const chartOptions = ref({
   chart: {
     type: props.type,
     backgroundColor: "transparent",
+    animation: {
+      duration: 500, // Duración en milisegundos
+    },
   },
   title: {
     text: props.title,
@@ -82,7 +85,7 @@ const chartOptions = ref({
 
 <style scoped>
 .q-pa-md {
-  width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+  width: 100%; 
   max-width: 100%;
   height: 100%;
   max-height: 100%;
@@ -92,17 +95,17 @@ const chartOptions = ref({
 
 .filter-card {
   display: grid;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 100%; /* Previene desbordamientos */
+  width: 100%; 
+  max-width: 100%; 
   box-sizing: border-box;
-  height: 100%; /* Asegura que el contenedor ocupe el 100% de la altura disponible */
+  height: 100%; 
+  border-radius: 12px;
   align-items: center;
 }
 
 .highcharts-container {
-  width: 100%; /* Obliga al gráfico a ocupar todo el ancho del contenedor */
+  width: 100%; 
   height: 98%;
-  padding: 1rem;
   box-sizing: border-box;
 }
 * {

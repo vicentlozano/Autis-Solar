@@ -1,5 +1,5 @@
 <template>
-  <q-card bordered flat class="filter-card" :style="{ '--dynamic-color': color }">
+  <q-card bordered   class="filter-card" :style="{ '--dynamic-color': color }">
     <p class="title">{{ title }}</p>
     <CircularCard
       :title="titleData"
@@ -44,6 +44,9 @@ const props = defineProps({
   height: 100%;
   border-radius: 12px;
   width: 100%;
+  box-shadow:
+    rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
   will-change: transform;
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }

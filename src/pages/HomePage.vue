@@ -132,6 +132,9 @@ const serieArray = [
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 }
+.line-graph {
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
 .alarm {
   height: fit-content;
 }
@@ -184,8 +187,7 @@ const serieArray = [
   .map{
     height: 400px;
   }
-}
-.weather:hover{
+  .weather:hover{
     transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
   }
   .first-card:hover{
@@ -197,10 +199,24 @@ const serieArray = [
 .third-card:hover{
   transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
 }
+}
+
 @media (max-width: 700px) {
   .line-graph {
     min-height: 100%;
   }
+  .weather:hover{
+    transform:scale(1.02);
+  }
+  .first-card:hover{
+    transform: scale(1.02);
+  }
+  .second-card:hover{
+    transform: scale(1.02);
+}
+.third-card:hover{
+  transform: scale(1.02);
+}
 }
 
 </style>
