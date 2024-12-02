@@ -1,11 +1,12 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md custom">
     <q-card bordered flat class="filter-card">
       <FilterBasic
         class="item1"
         :options="optionsSelectOne"
         :title="titleSelectOne"
         @filterSelect="updateSelect"
+        :selected="true"
       />
       <q-separator vertical inset class="custom-separator item2" />
       <FilterDateTime
@@ -35,7 +36,7 @@
           outline
           rounded
           dense
-          color="primary"
+          color="secondary"
           label="To Query"
           @click="toQuery"
         />
@@ -44,7 +45,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, defineProps } from "vue";
+import { ref, computed} from "vue";
 import FilterBasic from "./filter/FilterBasic.vue";
 import FilterDateTime from "./filter/FilterDateTime.vue";
 import SearchFilter from "./filter/SearchFilter.vue";
@@ -59,6 +60,7 @@ const props = defineProps({
   rangeCalendar: Boolean,
   isSearch: Boolean,
 });
+const emits  = defineEmits(['searchData']);
 
 const filterBasicValue = ref("");
 const filterDateTimeValue = ref(
@@ -97,6 +99,7 @@ const toQuery = () => {
     "Toggle Value:",
     combinedFilters.value.toggle
   );
+  emits('searchData',combinedFilters);
 };
 </script>
 <style scoped>
@@ -106,12 +109,15 @@ const toQuery = () => {
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
+  background: #e0eafc;
+  background: linear-gradient(to right, #cfdef32a, #e0eafc2c);
+  border-radius: 12px;
 }
 
 .item {
-  flex: 1 1 200px; /* Crece y se encoge con un tamaño base de 200px */
-  min-width: 200px; /* Ancho mínimo */
-  max-width: 400px; /* Ancho máximo */
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .botton-toggle {

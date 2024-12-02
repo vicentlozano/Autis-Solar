@@ -5,6 +5,7 @@
       :title="title"
       :custom="custom"
       @filterSelect="setRangeOption"
+      :selected="true"
     />
     <BasicCalendar
       :intervalOptions="intervalSelected"

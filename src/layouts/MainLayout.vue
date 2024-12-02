@@ -73,7 +73,20 @@ const menuList = [
     icon: "memory",
     label: "Sistems",
     separator: true,
-    link: "/",
+    subMenuItem: [
+      {
+        icon: "Danger",
+        label: "Sistem 1",
+        separator: false,
+        link: "/SistemsPage",
+      },
+      {
+        icon: "Alert",
+        label: "Sistem CE",
+        separator: true,
+        link: "/SistemsCEPage",
+      },
+    ],
   },
   {
     icon: "search",
@@ -201,10 +214,10 @@ function toggleLeftDrawer() {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-*{
-box-sizing: border-box !important;
+* {
+  box-sizing: border-box !important;
 }
-.normalize{
+.normalize {
   width: 100%;
   height: auto;
 }

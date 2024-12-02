@@ -7,7 +7,9 @@
     :titleRangeInterval="titleRange"
     :rangeCalendar="isRangeCalendar"
     :isSearch="true"
+    @searchData="showData"
   />
+  <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" :title="title" />
 </template>
 <script setup>
 import { ref } from "vue";
@@ -28,7 +30,11 @@ const rangeIntervals = [
 ];
 const titleRange = "intervals";
 const isRangeCalendar = true;
-
+const rows2 = ref(null);
+const showData = (data) => {
+  rows2.value = [...rows];
+  rows2.value[2].component = data.value.filterDateTime;
+};
 const columns = [
   {
     name: "name",

@@ -21,11 +21,12 @@
   </div>
 </template>
 <script setup>
-import { ref, defineProps, defineEmits, watch, computed } from "vue";
+import { ref, defineProps, defineEmits, watch} from "vue";
 const props = defineProps({
   options: Array,
   title: String,
   custom: Boolean,
+  selected: Boolean,
 });
 const emits = defineEmits(["filterSelect"]);
 const isCustom = ref(false);
@@ -33,13 +34,12 @@ const select = (value) => {
   inputSelected.value = value;
   emits("filterSelect", inputSelected.value);
 };
-const inputSelected = ref(props.options[0]);
+const inputSelected = ref(props.selected? props.options[0] : '');
 watch(
   () => props.custom,
   () => {
     if (props.custom) {
       inputSelected.value = props.options[6];
-      console.log(`eevento recibido en ocmponente final ${props.custom}`);
     }
   }
 );

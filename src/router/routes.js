@@ -15,6 +15,16 @@ const routes = [
         component: () => import("pages/PanelControlPage.vue"),
       },
       {
+        name: "Sistems Page",
+        path: "/SistemsPage",
+        component: () => import("pages/SistemsPage.vue"),
+      },
+      {
+        name: "SistemsCE Page",
+        path: "/SistemsCEPage",
+        component: () => import("pages/SistemsCEPage.vue"),
+      },
+      {
         name: "Weather",
         path: "/Weather",
         component: () => import("pages/WeatherPage.vue"),
