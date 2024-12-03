@@ -1,5 +1,6 @@
 <template>
   <div class="q-pa-md custom">
+    <h5 v-if="title" class="title">{{ title }}</h5>
     <q-card bordered flat class="filter-card">
       <FilterBasic
         class="item1"
@@ -45,7 +46,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed } from "vue";
 import FilterBasic from "./filter/FilterBasic.vue";
 import FilterDateTime from "./filter/FilterDateTime.vue";
 import SearchFilter from "./filter/SearchFilter.vue";
@@ -59,8 +60,9 @@ const props = defineProps({
   titleRangeInterval: String,
   rangeCalendar: Boolean,
   isSearch: Boolean,
+  title: String,
 });
-const emits  = defineEmits(['searchData']);
+const emits = defineEmits(["searchData"]);
 
 const filterBasicValue = ref("");
 const filterDateTimeValue = ref(
@@ -99,7 +101,7 @@ const toQuery = () => {
     "Toggle Value:",
     combinedFilters.value.toggle
   );
-  emits('searchData',combinedFilters);
+  emits("searchData", combinedFilters);
 };
 </script>
 <style scoped>
@@ -140,6 +142,17 @@ const toQuery = () => {
   min-width: 100px;
   max-width: 220px;
   max-height: 40px;
+}
+.title {
+  padding: 1rem 1rem 1rem 0rem ;
+  text-align: start;
+  font-weight: 600;
+  font-size: 2rem;
+  width: 100%;
+  color: oklch(60.41% 0.1644 43.11);
+  border-radius: 20px;
+  margin: 0rem;
+  padding-top: 0;
 }
 @media (max-width: 1350px) {
   .filter-card {

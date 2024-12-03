@@ -1,6 +1,6 @@
 <template>
-  <div class="q-pa-md">
-    <h5 class="table-title ">{{ title }}</h5>
+  <div class="q-pa-md table-div">
+    <h5 v-if="title" class="table-title ">{{ title }}</h5>
     <q-table
       class="custom-table"
       bordered
@@ -27,7 +27,8 @@ const visible = ref(true);
 
 <style scoped>
 :deep(.custom-table) {
-  max-height: 300px;
+  max-height: 400px;
+  height: fit-content;
   ::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento en WebKit (Chrome, Safari) */
   }
@@ -45,14 +46,22 @@ const visible = ref(true);
   width: 200px;
 }
 .table-title {
-  margin-bottom: 1rem;
-  text-align: center;
-  font-weight: 400;
+  padding: 1rem 1rem 1rem 0rem ;
+  text-align: start;
+  font-weight: 600;
+  font-size: 2rem;
   width: 100%;
   color: oklch(60.41% 0.1644 43.11);
   border-radius: 20px;
-  margin: 0.6rem;
+  margin: 0rem;
   padding-top: 0;
+}
+.table-div{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  margin: 0;
+  height: fit-content;
+  margin: 0;
 }
 
 

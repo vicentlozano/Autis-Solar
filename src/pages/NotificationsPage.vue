@@ -1,15 +1,19 @@
 <template>
-  <SimpleTab :columns="columns" :rows="rows" :title="title" />
-  <FilterTab
-    :optionsSelectOne="teamOptions"
-    :titleSelectOne="teamTitle"
-    :optionsRangeInterval="rangeIntervals"
-    :titleRangeInterval="titleRange"
-    :rangeCalendar="isRangeCalendar"
-    :isSearch="true"
-    @searchData="showData"
-  />
-  <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" :title="title" />
+  <section :class="rows2 ? 'normalize-all' : 'normalize'">
+    <SimpleTab :columns="columns" :rows="rows" :title="title" />
+    <div class="filter">
+      <FilterTab
+        :optionsSelectOne="teamOptions"
+        :titleSelectOne="teamTitle"
+        :optionsRangeInterval="rangeIntervals"
+        :titleRangeInterval="titleRange"
+        :rangeCalendar="isRangeCalendar"
+        :isSearch="true"
+        @searchData="showData"
+      />
+      <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" :title="title" />
+    </div>
+  </section>
 </template>
 <script setup>
 import { ref } from "vue";
@@ -117,4 +121,22 @@ const rows = [
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.normalize {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+  margin-top: 2rem;
+  max-height: 100%;
+}
+.normalize-all {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+</style>
