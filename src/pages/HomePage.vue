@@ -97,10 +97,10 @@ const serieArray = [
 .normalize-grid {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 0.4fr 0.55fr;
+  grid-template-rows: 0.4fr 1fr;
   justify-items: center;
   min-height: 100%;
-  max-height: 100%;
+  max-height: 90dvh;
   width: 100%;
 }
 
@@ -138,7 +138,7 @@ const serieArray = [
   height: fit-content;
 }
 .map {
-  min-height: 200px;
+  min-height: 350px;
 }
 .third-card:hover {
   transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.02);
@@ -171,7 +171,7 @@ const serieArray = [
     transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.005);
   }
 }
-@media (min-width: 1010px) and (max-width: 1500px) {
+@media (min-width: 1010px) and (max-width: 1499px) {
   .data-cards {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -183,11 +183,13 @@ const serieArray = [
     grid-template-rows: 0.5fr 3fr 3fr;
     max-height: none;
   }
-  map {
-    height: 400px;
+  
+  .normalize-grid {
+    grid-template-rows: 1fr 1fr;
+    max-height: none
   }
 }
-@media (min-width: 750px) and (max-width: 1009px) {
+@media (min-width: 712px) and (max-width: 1009px) {
   .normalize-home {
     display: grid;
     grid-template-rows: 0.01fr 3fr 4fr;
@@ -200,7 +202,9 @@ const serieArray = [
     max-height: none;
   }
   .normalize-grid {
-    grid-template-rows: 0.45fr 1.2fr;
+    grid-template-rows: 1fr 1.2fr;
+    max-height: none
+
   }
 
   .weather:hover {
@@ -217,10 +221,10 @@ const serieArray = [
   }
 }
 
-@media (max-width: 749px) {
+@media (max-width: 711px) {
   .normalize-home {
     display: grid;
-    grid-template-rows: 0.01fr 3fr 3fr;
+    grid-template-rows: 0.01fr 3.6fr 3fr;
     max-height: none;
 
   }
@@ -239,16 +243,16 @@ const serieArray = [
   }
 
   .normalize-grid {
-    grid-template-rows: auto auto;
+    grid-template-rows: 1.2fr 1fr;
+    max-height: none
+
   }
   .graph {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fit, minmax(350px, 1fr));
     max-height: none;
   }
-  .normalize-grid {
-    grid-template-rows: 0.45fr auto;
-  }
+  
 
 }
 </style>
