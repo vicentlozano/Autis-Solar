@@ -162,10 +162,9 @@ onMounted(async () => {
 .card {
   display: grid;
   grid-template-rows: 2fr 1fr;
-  background: url("../../assets/weather/background2.png");
+  background-image: url("../../assets/weather/background2.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-x: right;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -181,6 +180,23 @@ onMounted(async () => {
     rgba(0, 0, 0, 0.23) 0px 6px 6px;
   font-family: "Helvetica Neue", sans-serif;
 }
+.grid-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.tomorrow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  border-top: 0.5px solid white;
+  width: 100%;
+  padding-top: 0.6rem;
+  column-gap: 2px;
+}
 .grid {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -193,12 +209,6 @@ onMounted(async () => {
   padding-top: 0.6rem;
 }
 
-.grid-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-}
 .grid-column img {
   justify-self: center;
   align-self: center;
@@ -262,15 +272,6 @@ p {
   padding: 0;
   margin: 0;
 }
-.tomorrow {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  border-top: 0.5px solid white;
-  padding-top: 0.6rem;
-  column-gap: 2px;
-}
 .clouds,
 .precipitation,
 .arrow {
@@ -285,4 +286,5 @@ p {
   width: 40px;
   height: 40px;
 }
+
 </style>
