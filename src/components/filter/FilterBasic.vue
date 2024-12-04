@@ -47,18 +47,29 @@ watch(
 emits("filterSelect", inputSelected.value);
 </script>
 <style scoped>
+.q-pa-md{
+  padding: 0.8rem;
+}
 .custom {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .custom-select {
-  min-width: 220px;
+  min-width: 200px;
 }
-@media (max-width: 550px) {
+@media (max-width:1300px) {
   .custom-select {
-    min-width: 150px;
-  }
+  min-width: 130px;
+}
+}
+@media (max-width:609px) {
+  .custom {
+ padding: 0.7rem 0.4rem 0.4rem 0.4rem;
+ max-width: 130px;
+
+}
+
 }
 
 </style>

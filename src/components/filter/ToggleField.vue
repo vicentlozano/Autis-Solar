@@ -3,7 +3,8 @@
     v-model="fourth"
     checked-icon="check"
     color="green"
-    :label="label"
+    left-label
+    label="Historic Mode"
     unchecked-icon="clear"
     class="toggle"
     dense

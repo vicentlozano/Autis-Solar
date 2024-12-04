@@ -36,14 +36,11 @@ const changeText = () => {
   align-items: center;
 }
 .custom-input {
-  min-width: 220px;
+  min-width: 200px;
 }
-@media (max-width: 550px) {
-  .custom{
-    padding: 0rem;
-  }
+@media (max-width:780px) {
   .custom-input {
-    min-width: 150px;
-  }
+  min-width: 130px;
+}
 }
 </style>

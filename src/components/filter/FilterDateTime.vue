@@ -107,7 +107,7 @@ watch(intervalSelected, (newValue) => {
 .horizontal {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 0.5rem;
   align-items: center;
 }

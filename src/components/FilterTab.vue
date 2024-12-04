@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md custom">
     <h5 v-if="title" class="title">{{ title }}</h5>
-    <q-card bordered flat class="filter-card">
+    <q-card bordered  class="filter-card">
       <FilterBasic
         class="select"
         :options="optionsSelectOne"
@@ -21,7 +21,7 @@
         @charactersToSearch="updateSearch"
         v-if="isSearch"
       />
-      <section class="query">
+      <section class="toggle-plus-button">
         <div class="custom-button">
           <q-btn
             outline
@@ -30,7 +30,9 @@
             color="secondary"
             label="To Query"
             @click="toQuery"
-            padding="0.3rem 1rem 0.3rem 1rem"
+            width="200px"
+            height="40px"
+            padding="0.1rem 1rem 0.1rem 1rem"
           />
         </div>
         <ToggleField
@@ -105,17 +107,19 @@ const toQuery = () => {
 };
 </script>
 <style scoped>
+.title {
+  padding: 0;
+  margin: 0.5rem;
+}
 .filter-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
-}
-.select {
-  border-right: 4px solid blueviolet;
-}
-
-.date {
-}
-.search {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 20px
 }
 .query {
   display: flex;
@@ -123,8 +127,29 @@ const toQuery = () => {
   justify-content: center;
   align-items: center;
 }
-.toggle {
+.toggle-plus-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0 1rem;
 }
 .custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1013px) {
+  .toggle {
+    padding-bottom: 0.3rem;
+  }
+  
+}
+@media (max-width: 695px){
+  .custom-button{
+    padding: 0rem 0 0.4rem 0;
+  }
 }
 </style>
