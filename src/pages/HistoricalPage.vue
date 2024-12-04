@@ -7,6 +7,8 @@
     :titleRangeInterval="titleRange"
     :rangeCalendar="isRangeCalendar"
     :isSearch="false"
+    :isToggle="true"
+    :togleLabel="'Auto'"
   />
 </template>
 <script setup>

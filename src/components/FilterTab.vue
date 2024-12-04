@@ -31,7 +31,12 @@
       />
 
       <div class="botton-toggle item6 q-pa-xs">
-        <ToggleField @booleanSelect="updateToggle" class="toggle" />
+        <ToggleField
+          v-if="isToggle"
+          @booleanSelect="updateToggle"
+          class="toggle"
+          :label="togleLabel"
+        />
         <q-btn
           class="custom-button"
           outline
@@ -61,6 +66,8 @@ const props = defineProps({
   rangeCalendar: Boolean,
   isSearch: Boolean,
   title: String,
+  isToggle: Boolean,
+  togleLabel: String,
 });
 const emits = defineEmits(["searchData"]);
 
@@ -115,6 +122,10 @@ const toQuery = () => {
   background: linear-gradient(to right, #cfdef32a, #e0eafc2c);
   border-radius: 12px;
 }
+.toggle {
+  padding: 0;
+  margin: 0;
+}
 
 .item {
   flex: 1 1 200px;
@@ -127,7 +138,6 @@ const toQuery = () => {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 1px;
 }
 
 .custom-separator {
@@ -144,7 +154,7 @@ const toQuery = () => {
   max-height: 40px;
 }
 .title {
-  padding: 1rem 1rem 1rem 0rem ;
+  padding: 1rem 1rem 1rem 0rem;
   text-align: start;
   font-weight: 600;
   font-size: 2rem;
@@ -154,7 +164,7 @@ const toQuery = () => {
   margin: 0rem;
   padding-top: 0;
 }
-@media (max-width: 1350px) {
+@media (min-width: 1057px) and (max-width: 1350px)  {
   .filter-card {
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
@@ -177,9 +187,10 @@ const toQuery = () => {
     flex-direction: column;
     gap: 0px;
   }
-
+ 
   .botton-toggle {
     flex-direction: row;
+    gap: 2rem;
   }
   .toggle {
     margin-right: 10px;
@@ -187,5 +198,6 @@ const toQuery = () => {
   .custom-separator {
     display: none;
   }
+
 }
 </style>

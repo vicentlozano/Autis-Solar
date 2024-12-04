@@ -27,7 +27,7 @@ const visible = ref(true);
 
 <style scoped>
 :deep(.custom-table) {
-  max-height: 400px;
+  max-height: 290px;
   height: fit-content;
   ::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento en WebKit (Chrome, Safari) */

@@ -1,5 +1,5 @@
 <template>
-  <section :class="rows2 ? 'normalize-all' : 'normalize'">
+  <section class='normalize-all'>
     <SimpleTab :columns="columns" :rows="rows" :title="title" />
     <div class="filter">
       <FilterTab
@@ -12,7 +12,9 @@
         @searchData="showData"
         :title="'Alarms Historic'"
       />
-      <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" />
+      <div>
+        <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" />
+      </div>
     </div>
   </section>
 </template>
@@ -69,7 +71,7 @@ const columns = [
 ];
 
 const rows = [
-  {
+{
     date: currentDate.value,
     component: "RELE",
     description: "Temperatura alta",
@@ -123,21 +125,11 @@ const rows = [
 </script>
 
 <style scoped>
-.normalize {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 1rem;
-  gap: 1rem;
-  margin-top: 2rem;
-  max-height: 100%;
-}
 .normalize-all {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   max-height: 100%;
   height: 100%;
   padding: 1rem;
-  gap: 1rem;
 }
 </style>
