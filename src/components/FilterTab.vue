@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md custom">
     <h5 v-if="title" class="title">{{ title }}</h5>
-    <q-card bordered  class="filter-card">
+    <q-card bordered class="filter-card">
       <FilterBasic
         class="select"
         :options="optionsSelectOne"
@@ -9,6 +9,7 @@
         @filterSelect="updateSelect"
         :selected="true"
       />
+      <q-separator :vertical="true" class="separator" :color="'primary'"/>
       <FilterDateTime
         class="date"
         @dateToSearch="updateDate"
@@ -16,11 +17,13 @@
         :title="titleRangeInterval"
         :isRange="rangeCalendar"
       />
+      <q-separator :vertical="true" class="separator"  :color="'primary'"/>
       <SearchFilter
         class="search"
         @charactersToSearch="updateSearch"
         v-if="isSearch"
       />
+      <q-separator v-if="isSearch"  :vertical="true" class="separator" :color="'primary'" />
       <section class="toggle-plus-button">
         <div class="custom-button">
           <q-btn
@@ -115,11 +118,10 @@ const toQuery = () => {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding: 0.4rem;
   align-items: center;
-  box-shadow:
-    rgba(0, 0, 0, 0.19) 0px 10px 20px,
-    rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border-radius: 20px
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 20px;
 }
 .query {
   display: flex;
@@ -140,16 +142,14 @@ const toQuery = () => {
   align-items: center;
   justify-content: center;
 }
+.date {
+  border-right: 1px solid green;
+}
+@media (max-width: 1500px){
+  .separator{
+    display: none;
+  }
+}
 
-@media (max-width: 1013px) {
-  .toggle {
-    padding-bottom: 0.3rem;
-  }
-  
-}
-@media (max-width: 695px){
-  .custom-button{
-    padding: 0rem 0 0.4rem 0;
-  }
-}
+
 </style>

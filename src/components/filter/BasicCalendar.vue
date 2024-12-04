@@ -84,7 +84,7 @@ const test = (value) => {
   min-width: 200px;
 }
 .q-pa-md{
-  padding: 0;
+  padding: 12.8px;
 }
 @media (min-width: 610px) and (max-width:1300px) {
   .custom-input {
@@ -96,8 +96,10 @@ const test = (value) => {
   .custom-input {
   min-width: 130px;
   max-width: 130px;
-  padding: 0.7rem 0.4rem 0.4rem 0.4rem;
-
+  padding: 0.7rem 0rem 0.4rem 0.45rem;
+}
+.q-pa-md{
+  padding: 0;
 }
 
 
