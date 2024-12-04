@@ -63,7 +63,7 @@ import DataCard from "src/components/cards/DataCard.vue";
 import TestLineChart from "src/components/highcharts/TestLineChart.vue";
 import MapComponent from "src/components/MapComponent.vue";
 
-const isAlarm = ref(true);
+const isAlarm = ref(false);
 const title = "Sistema 1";
 const icon = "/icons/sistemIcon.png";
 const data = ref(33.5);
@@ -89,9 +89,9 @@ const serieArray = [
 .normalize-home {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 0.5fr 3fr 5fr;
-  min-height: 100%;
-  max-height: 90dvh;
+  grid-template-rows: auto 1fr 1.6fr;
+  height: 100%;
+  max-height: 100%;
   width: 100%;
 }
 .normalize-grid {
@@ -99,8 +99,8 @@ const serieArray = [
   display: grid;
   grid-template-rows: 0.4fr 1fr;
   justify-items: center;
-  min-height: 100%;
-  max-height: 90dvh;
+  height: 100%;
+  max-height: 100%;
   width: 100%;
 }
 

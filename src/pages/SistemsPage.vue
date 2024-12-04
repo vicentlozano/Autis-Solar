@@ -3,7 +3,7 @@
     <q-tabs
       v-model="tab"
       dense
-      class="text-grey-7"
+      class="text-grey-7n banner"
       active-color="primary"
       indicator-color="purple"
       align="justify"
@@ -26,20 +26,21 @@
       />
     </q-tabs>
 
-    <q-tab-panels v-model="tab" animated class="bg-transparent text-white">
-      <q-tab-panel name="inverter" class="normalize">
+    <q-tab-panels v-model="tab" animated class="bg-transparent text-white map">
+      <q-tab-panel name="inverter" class="content">
+        <MapComponent class="content"/>
       </q-tab-panel>
-      <q-tab-panel name="cboxes" class="normalize">
+      <q-tab-panel name="cboxes" class="content">
       </q-tab-panel>
-      <q-tab-panel name="analizer" class="normalize">
+      <q-tab-panel name="analizer" class="content">
       </q-tab-panel>
-      <q-tab-panel name="follows" class="normalize">
+      <q-tab-panel name="follows" class="content">
       </q-tab-panel>
     </q-tab-panels>
   </div>
-  <section class="content"></section>
 </template>
 <script setup>
+import MapComponent from "src/components/MapComponent.vue";
 import { ref } from "vue";
 const tab = ref("inverter");
 
@@ -66,11 +67,19 @@ const optionsFollow = [
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-.normalize {
+.map {
   display: flex;
-  height: 100%;
+  width: 100%;
+  height: 95%;
 }
 .principal {
   height: 100%;
 }
+.content{
+  height: 100%
+}
+.banner{
+  height: 5%;
+}
+
 </style>

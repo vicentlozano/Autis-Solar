@@ -217,12 +217,11 @@ function toggleLeftDrawer() {
 * {
   box-sizing: border-box !important;
 }
-.normalize {
-  width: 100%;
-  height: auto;
-}
+
 
 .globalStyle {
+  padding: 0;
+  margin:0;
   font-family: "Roboto", sans-serif; /* Aplicar la fuente de Material Design */
   display: grid;
   min-height: 100dvh;
@@ -241,4 +240,8 @@ function toggleLeftDrawer() {
 .menu-text {
   font-size: 1em;
 }
+.normalize{
+  height: 100%;
+}
+
 </style>
