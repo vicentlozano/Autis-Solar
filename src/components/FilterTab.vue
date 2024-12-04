@@ -3,50 +3,43 @@
     <h5 v-if="title" class="title">{{ title }}</h5>
     <q-card bordered flat class="filter-card">
       <FilterBasic
-        class="item1"
+        class="select"
         :options="optionsSelectOne"
         :title="titleSelectOne"
         @filterSelect="updateSelect"
         :selected="true"
       />
-      <q-separator vertical inset class="custom-separator item2" />
       <FilterDateTime
-        class="item3"
+        class="date"
         @dateToSearch="updateDate"
         :intervals="optionsRangeInterval"
         :title="titleRangeInterval"
         :isRange="rangeCalendar"
       />
-      <q-separator vertical inset class="custom-separator item4" />
       <SearchFilter
-        class="item5"
+        class="search"
         @charactersToSearch="updateSearch"
         v-if="isSearch"
       />
-      <q-separator
-        vertical
-        inset
-        class="custom-separator item2"
-        v-if="isSearch"
-      />
-
-      <div class="botton-toggle item6 q-pa-xs">
+      <section class="query">
+        <div class="custom-button">
+          <q-btn
+            outline
+            rounded
+            dense
+            color="secondary"
+            label="To Query"
+            @click="toQuery"
+            padding="0.3rem 1rem 0.3rem 1rem"
+          />
+        </div>
         <ToggleField
           v-if="isToggle"
           @booleanSelect="updateToggle"
           class="toggle"
           :label="togleLabel"
         />
-        <q-btn
-          class="custom-button"
-          outline
-          rounded
-          dense
-          color="secondary"
-          label="To Query"
-          @click="toQuery"
-        />
-      </div>
+      </section>
     </q-card>
   </div>
 </template>
@@ -113,91 +106,25 @@ const toQuery = () => {
 </script>
 <style scoped>
 .filter-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-  background: #e0eafc;
-  background: linear-gradient(to right, #cfdef32a, #e0eafc2c);
-  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
 }
-.toggle {
-  padding: 0;
-  margin: 0;
+.select {
+  border-right: 4px solid blueviolet;
 }
 
-.item {
-  flex: 1 1 200px;
-  min-width: 200px;
-  max-width: 400px;
+.date {
 }
-
-.botton-toggle {
+.search {
+}
+.query {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.custom-separator {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 0.1px;
-  background-color: var(--q-primary);
 }
-
+.toggle {
+}
 .custom-button {
-  min-width: 100px;
-  max-width: 220px;
-  max-height: 40px;
-}
-.title {
-  padding: 1rem 1rem 1rem 0rem;
-  text-align: start;
-  font-weight: 600;
-  font-size: 2rem;
-  width: 100%;
-  color: oklch(60.41% 0.1644 43.11);
-  border-radius: 20px;
-  margin: 0rem;
-  padding-top: 0;
-}
-@media (min-width: 1057px) and (max-width: 1350px)  {
-  .filter-card {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-
-  .botton-toggle {
-    flex-direction: row;
-  }
-
-  .toggle {
-    margin-right: 10px;
-  }
-
-  .custom-separator {
-    display: none;
-  }
-}
-@media (max-width: 1056px) {
-  .filter-card {
-    flex-direction: column;
-    gap: 0px;
-  }
- 
-  .botton-toggle {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  .toggle {
-    margin-right: 10px;
-  }
-  .custom-separator {
-    display: none;
-  }
-
 }
 </style>

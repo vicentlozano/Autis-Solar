@@ -11,6 +11,8 @@
         :isSearch="true"
         @searchData="showData"
         :title="'Alarms Historic'"
+        :isToggle="true"
+        :togleLabel="'Hostoric Mode'"
       />
       <div>
         <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" />

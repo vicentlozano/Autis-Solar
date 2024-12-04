@@ -39,9 +39,11 @@ const changeText = () => {
   min-width: 220px;
 }
 @media (max-width: 550px) {
+  .custom{
+    padding: 0rem;
+  }
   .custom-input {
-    max-width: 112px;
-    min-width: none;
+    min-width: 150px;
   }
 }
 </style>

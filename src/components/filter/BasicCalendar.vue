@@ -81,11 +81,11 @@ const test = (value) => {
   padding-right: 1px;
 }
 .custom-input {
-  min-width: 20px;
+  min-width: 220px;
 }
 @media (max-width: 550px) {
   .custom-input {
-    max-width: 150px;
+    min-width: 150px;
   }
 }
 </style>
