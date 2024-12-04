@@ -15,6 +15,8 @@ import CircularProgres from "./CircularProgres.vue";
   align-items: center;
   height: 100%;
   border-radius: 12px;
+  padding: 0;
+  margin: 0;
   width: 100%;
   will-change: transform;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
