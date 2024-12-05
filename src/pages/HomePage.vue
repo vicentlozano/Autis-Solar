@@ -170,6 +170,11 @@ const serieArray = [
   .third-card:hover {
     transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.005);
   }
+  .normalize-home {
+  
+  grid-template-rows: auto 1fr 1.5fr;
+ 
+}
 }
 @media (min-width: 1010px) and (max-width: 1499px) {
   .data-cards {

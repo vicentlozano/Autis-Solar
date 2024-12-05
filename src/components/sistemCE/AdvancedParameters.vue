@@ -26,9 +26,8 @@ const columns = ref([
     align: "left",
     field: (row) => row.name,
     format: (val) => `${val}`,
-    sortable: true,
   },
-  { name: "value", label: "Value", field: "value", sortable: true },
+  { name: "value", label: "Value", field: "value"},
 ]);
 const rows = ref([
   { name: "rele", value: 33 },
@@ -138,18 +137,23 @@ const rows = ref([
 </script>
 
 <style scoped>
+
+.filter-card{
+}
 :deep(.custom-table) {
   max-height: 85dvh;
   height: fit-content;
   ::-webkit-scrollbar {
   width: 8px; /* Ancho de la barra vertical */
   height: 8px; /* Altura de la barra horizontal */
+
 }
 
 /* Fondo de la barra de desplazamiento */
 ::-webkit-scrollbar-track {
   background: transparent; /* Color de fondo del track */
   border-radius: 10px; /* Bordes redondeados */
+
 }
 
 /* Barra de desplazamiento */
@@ -165,12 +169,17 @@ const rows = ref([
   color: white;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
+}
+:deep(.custom-table td:nth-child(2)) {
+  text-align: center;
+  width: 150px;
+}
+:deep(.custom-table th:nth-child(2)) {
+  text-align: center;
 }
 
-:deep(.custom-table td) {
-  width: 200px;
-}
+
 .table-title {
   padding: 1rem 1rem 1rem 0rem;
   text-align: start;

@@ -215,13 +215,12 @@ function toggleLeftDrawer() {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 * {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
-
 
 .globalStyle {
   padding: 0;
-  margin:0;
+  margin: 0;
   font-family: "Roboto", sans-serif; /* Aplicar la fuente de Material Design */
   display: grid;
   min-height: 100dvh;
@@ -240,8 +239,7 @@ function toggleLeftDrawer() {
 .menu-text {
   font-size: 1em;
 }
-.normalize{
+.normalize {
   height: 100%;
 }
-
 </style>
