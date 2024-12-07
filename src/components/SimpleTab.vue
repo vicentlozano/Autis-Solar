@@ -1,15 +1,16 @@
 <template>
   <div class="q-pa-md table-div">
-    <h5 v-if="title" class="table-title ">{{ title }}</h5>
+    <h5 v-if="title" class="table-title">{{ title }}</h5>
     <q-table
       class="custom-table"
+      :class="{ 'flat': isFlat, 'normal': !isFlat }"
       bordered
       flat
       :rows="rows"
       :columns="columns"
       row-key="name"
       :separator="'none'"
-      :rows-per-page-options="[5, 10]"
+      :rows-per-page-options="rowsXpage || [5, 10]"
     />
   </div>
 </template>
@@ -20,18 +21,24 @@ const props = defineProps({
   rows: Array,
   columns: Array,
   title: String,
+  isFlat: Boolean,
+  rowsXpage: Array,
 });
 const visible = ref(true);
-
 </script>
 
 <style scoped>
 :deep(.custom-table) {
-  max-height: 290px;
   height: fit-content;
   ::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento en WebKit (Chrome, Safari) */
   }
+}
+:deep(.flat) {
+  max-height: 290px;
+}
+:deep(.normal) {
+  max-height: 1290px;
 }
 
 :deep(.custom-table th) {
@@ -44,9 +51,12 @@ const visible = ref(true);
 
 :deep(.custom-table td) {
   width: 200px;
+  white-space: pre-wrap;
+  text-align: center; 
+  line-height: 1.5; 
 }
 .table-title {
-  padding: 1rem 1rem 1rem 0rem ;
+  padding: 1rem 1rem 1rem 0rem;
   text-align: start;
   font-weight: 600;
   font-size: 2rem;
@@ -56,13 +66,11 @@ const visible = ref(true);
   margin: 0rem;
   padding-top: 0;
 }
-.table-div{
+.table-div {
   display: grid;
   grid-template-rows: auto 1fr;
   margin: 0;
   height: fit-content;
   margin: 0;
 }
-
-
 </style>

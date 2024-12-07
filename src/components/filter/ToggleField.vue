@@ -4,7 +4,7 @@
     checked-icon="check"
     color="green"
     left-label
-    label="Historic Mode"
+    :label="label"
     unchecked-icon="clear"
     class="toggle"
     dense

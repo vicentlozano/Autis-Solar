@@ -1,17 +1,17 @@
 <template>
   <div class="filter-card">
     <h5 v-if="title" class="table-title">{{ title }}</h5>
-      <q-table
-        class="custom-table"
-        bordered
-        flat
-        :rows="rows"
-        :columns="columns"
-        row-key="name"
-        hide-bottom
-        :separator="'none'"
-        :rows-per-page-options="[10000]"
-      />
+    <q-table
+      class="custom-table"
+      flat
+      bordered
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      hide-bottom
+      :separator="'none'"
+      :rows-per-page-options="[10000]"
+    />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ const columns = ref([
     field: (row) => row.name,
     format: (val) => `${val}`,
   },
-  { name: "value", label: "Value", field: "value"},
+  { name: "value", label: "Value", field: "value" },
 ]);
 const rows = ref([
   { name: "rele", value: 33 },
@@ -138,30 +138,34 @@ const rows = ref([
 
 <style scoped>
 
-.filter-card{
+.filter-card {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  padding-left:1rem;
+  width: 100%;
 }
 :deep(.custom-table) {
   max-height: 85dvh;
   height: fit-content;
+  width: 100%;
   ::-webkit-scrollbar {
-  width: 8px; /* Ancho de la barra vertical */
-  height: 8px; /* Altura de la barra horizontal */
+    width: 8px; /* Ancho de la barra vertical */
+    height: 8px; /* Altura de la barra horizontal */
+  }
 
-}
+  /* Fondo de la barra de desplazamiento */
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Color de fondo del track */
+    border-radius: 10px; /* Bordes redondeados */
+  }
 
-/* Fondo de la barra de desplazamiento */
-::-webkit-scrollbar-track {
-  background: transparent; /* Color de fondo del track */
-  border-radius: 10px; /* Bordes redondeados */
-
-}
-
-/* Barra de desplazamiento */
-::-webkit-scrollbar-thumb {
-  background-color: #ff5722; /* Color de la barra */
-  border-radius: 10px; /* Bordes redondeados */
-  border: 2px solid #f3f3f3; /* Espacio alrededor para efecto flotante */
-}
+  /* Barra de desplazamiento */
+  ::-webkit-scrollbar-thumb {
+    background-color: #ff5722; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid #f3f3f3; /* Espacio alrededor para efecto flotante */
+  }
 }
 
 :deep(.custom-table th) {
@@ -179,9 +183,8 @@ const rows = ref([
   text-align: center;
 }
 
-
 .table-title {
-  padding: 1rem 1rem 1rem 0rem;
+  padding: 1rem 1rem 1rem 1rem;
   text-align: start;
   font-weight: 600;
   font-size: 2rem;
@@ -191,11 +194,5 @@ const rows = ref([
   margin: 0rem;
   padding-top: 0;
 }
-.table-div {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  margin: 0;
-  height: fit-content;
-  margin: 0;
-}
+
 </style>

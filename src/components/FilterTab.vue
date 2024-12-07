@@ -4,12 +4,13 @@
     <q-card bordered class="filter-card">
       <FilterBasic
         class="select"
+        v-if="optionsSelectOne"
         :options="optionsSelectOne"
         :title="titleSelectOne"
         @filterSelect="updateSelect"
         :selected="true"
       />
-      <q-separator :vertical="true" class="separator" :color="'primary'"/>
+      <q-separator v-if="optionsSelectOne" :vertical="true" class="separator" :color="'primary'"/>
       <FilterDateTime
         class="date"
         @dateToSearch="updateDate"
@@ -68,7 +69,6 @@ const props = defineProps({
   togleLabel: String,
 });
 const emits = defineEmits(["searchData"]);
-
 const filterBasicValue = ref("");
 const filterDateTimeValue = ref(
   new Date().toISOString().slice(0, 10).replace(/-/g, "/")
@@ -107,6 +107,7 @@ const toQuery = () => {
     combinedFilters.value.toggle
   );
   emits("searchData", combinedFilters);
+  console.log(combinedFilters.value);
 };
 </script>
 <style scoped>

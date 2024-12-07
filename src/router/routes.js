@@ -18,30 +18,7 @@ const routes = [
         name: "Sistems Page",
         path: "/SistemsPage",
         component: () => import("pages/SistemsPage.vue"),
-        children: [
-          {
-            name: "inverter",
-            path: "inverter",
-            component: () => import("pages/sistem/InverterPage.vue"),
-          },
-          {
-            name: "Panel Control",
-            path: "/PanelControl",
-            component: () => import("pages/PanelControlPage.vue"),
-          },
-          {
-            name: "Sistems Page",
-            path: "/SistemsPage",
-            component: () => import("pages/SistemsPage.vue"),
-          },
-          {
-            name: "SistemsCE Page",
-            path: "/SistemsCEPage",
-            component: () => import("pages/SistemsCEPage.vue"),
-          },
-          
-      
-      ]},
+      },
       {
         name: "SistemsCE Page",
         path: "/SistemsCEPage",

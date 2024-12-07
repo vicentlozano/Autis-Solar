@@ -1,6 +1,6 @@
 <template>
  <section class='normalize-all'>
-    <SimpleTab :columns="columns" :rows="rows" :title="title" />
+    <SimpleTab :columns="columns" :rows="rows" :title="title" isFlat="true" :rowsXpage="[4,10,100]"/>
     <div class="filter">
       <FilterTab
         :optionsSelectOne="teamOptions"
@@ -13,7 +13,7 @@
         :title="'Alarms Historic'"
       />
       <div>
-        <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" />
+        <SimpleTab v-if="rows2" :columns="columns" :rows="rows2" :isFlat="true" :rowsXpage="[4,10,100]"/>
       </div>
     </div>
   </section>

@@ -15,7 +15,7 @@
 import FilterTab from "src/components/FilterTab.vue";
 
 const teamOptions = ["Emet", "Sistema 1"];
-const teamTitle = "Geeneral";
+const teamTitle = "General";
 const rangeIntervals = [
   "Today",
   "Yesterday",

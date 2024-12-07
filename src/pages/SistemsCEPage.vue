@@ -18,9 +18,9 @@
           <!-- Panel izquierdo fijo -->
           <div class="left-panel">
             <q-tabs v-model="innerTab" vertical class="text-teal">
-              <q-tab name="innerMails" icon="mail" label="Mails" />
-              <q-tab name="innerAlarms" icon="alarm" label="Alarms" />
-              <q-tab name="innerMovies" icon="movie" label="Movies" />
+              <q-tab name="parameters" icon="mail" label="Parameters" class="custom-label" />
+              <q-tab name="advancedParameters" icon="alarm" label="Advanced Parameters" class="custom-label" />
+              <q-tab name="historic" icon="movie" label="Historic" class="custom-label" />
             </q-tabs>
           </div>
 
@@ -33,15 +33,16 @@
               transition-next="slide-up"
               class="bg-transparent text-black"
             >
-              <q-tab-panel name="innerMails" class="content">
+              <q-tab-panel name="parameters" class="content">
+              </q-tab-panel>
+              
+              <q-tab-panel name="advancedParameters" class="content">
                 <AdvancedParameters />
               </q-tab-panel>
 
-              <q-tab-panel name="innerAlarms" class="content">
-              </q-tab-panel>
-
-              <q-tab-panel name="innerMovies" class="content">
-               <AlarmsPage/>
+              <q-tab-panel name="historic">
+                <FilterTab :range-calendar="isRangeCalendar" :options-range-interval="rangeIntervals" :title-range-interval="titleRange" :is-toggle="true" :togleLabel="'auto'"/>
+                <SimpleTab :columns="columns" :rows="rows" :rows-xpage="[7,20]"/>
               </q-tab-panel>
             </q-tab-panels>
           </div>
@@ -56,12 +57,108 @@
 </template>
 
 <script setup>
-import AlarmsPage from "src/components/sistemCE/AlarmsPage.vue";
 import AdvancedParameters from "src/components/sistemCE/AdvancedParameters.vue";
+import FilterTab from "src/components/FilterTab.vue";
 import { ref } from "vue";
+import SimpleTab from "src/components/SimpleTab.vue";
 
 const tab = ref("contador");
-const innerTab = ref("innerMails");
+const innerTab = ref("parameters");
+const rangeIntervals = [
+  "Today",
+  "Yesterday",
+  "This week",
+  "Last week",
+  "This month",
+  "Last Month",
+  "Custom",
+];
+const titleRange = "intervals";
+const isRangeCalendar = true;
+
+
+//Example table
+const currentDate = ref(new Date().toLocaleString());
+const columns = [
+  {
+    name: "name",
+    required: true,
+    label: "Date",
+    align: "center",
+    field: (row) => row.date,
+    format: (val) => `${val}`,
+    sortable: true,
+  },
+  {
+    name: "component",
+    align: "center",
+    label: "Component",
+    align: "center",
+
+    field: "component",
+    sortable: false,
+  },
+  {
+    name: "description",
+    label: "Description",
+    field: "description",
+    align: "center",
+    sortable: false,
+  },
+];
+
+const rows = [
+{
+    date: currentDate.value,
+    component: "RELE",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta a niveles extremos. precaución",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+  {
+    date: currentDate.value,
+    component: "PLC INGETEAM",
+    description: "Temperatura alta",
+  },
+];
 </script>
 
 <style scoped>
@@ -91,12 +188,17 @@ const innerTab = ref("innerMails");
 
 /* Panel izquierdo fijo */
 .left-panel {
-  width: 100px; /* Ajusta el ancho según lo necesario */
+  width: fit-content; /* Ajusta el ancho según lo necesario */
   background-color: transparent;
 }
 
 /* Panel derecho dinámico */
 .right-panel {
   flex: 1; /* Ocupa el espacio restante */
+}
+.custom-label{
+  white-space: pre-wrap;
+  text-align: center; /* Opcional: Centrar el texto */
+  line-height: 1.5; /* Ajusta el espaciado entre líneas */
 }
 </style>
