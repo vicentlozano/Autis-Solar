@@ -19,7 +19,7 @@
           <div class="left-panel">
             <q-tabs v-model="innerTab" vertical class="text-teal">
               <q-tab name="parameters" icon="mail" label="Parameters" class="custom-label" />
-              <q-tab name="advancedParameters" icon="alarm" label="Advanced Parameters" class="custom-label" />
+              <q-tab name="advancedParameters" icon="mdi-abacus" label="Advanced Parameters" class="custom-label" />
               <q-tab name="historic" icon="movie" label="Historic" class="custom-label" />
             </q-tabs>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <q-card bordered   class="filter-card" :style="{ '--dynamic-color': color }">
+  <q-card bordered class="filter-card" :style="{ '--dynamic-color': color }">
     <p class="title">{{ title }}</p>
     <CircularCard
       :title="titleData"
@@ -45,11 +45,9 @@ const props = defineProps({
   max-height: 300px;
   border-radius: 12px;
   width: 100%;
-  box-shadow:
-    rgba(0, 0, 0, 0.19) 0px 10px 20px,
-    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   will-change: transform;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .circular-card {
@@ -95,9 +93,9 @@ const props = defineProps({
 .filter-card:hover {
   transform: perspective(800px) rotateX(5deg) rotateY(10deg) scale(1.02);
 }
-@media(max-width: 900px){
+@media (max-width: 900px) {
   .filter-card:hover {
-  transform:  scale(1.03);
-}
+    transform: scale(1.03);
+  }
 }
 </style>

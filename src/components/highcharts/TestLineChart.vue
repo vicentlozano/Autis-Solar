@@ -1,17 +1,16 @@
 <template>
   <div class="q-pa-md">
-    <q-card bordered  class="filter-card">
-      <highcharts
-        :options="chartOptions"
-        class="highcharts-container"
-      ></highcharts>
+    <q-card bordered class="filter-card">
+      <div id="chart1"></div>
     </q-card>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, defineProps, watch } from "vue";
+import { ref, computed, defineProps, watch, onMounted } from "vue";
 import { Dark } from "quasar";
+import HighCharts from "highcharts";
+
 const props = defineProps({
   type: String,
   title: String,
@@ -24,7 +23,7 @@ const darkMode = ref(Dark.isActive);
 watch(
   () => Dark.isActive,
   (newDarkMode) => {
-    darkMode.value = newDarkMode; 
+    darkMode.value = newDarkMode;
   }
 );
 
@@ -44,11 +43,13 @@ const chartOptions = ref({
     type: props.type,
     backgroundColor: "transparent",
     animation: {
-      duration: 500, // Duración en milisegundos
+      enabled: true,
+      duration: 50000,
+      easing: "linear",
     },
   },
   credits: {
-    enabled: false // Esto elimina la marca de agua de Highcharts
+    enabled: false, // Esto elimina la marca de agua de Highcharts
   },
   title: {
     text: props.title,
@@ -84,34 +85,35 @@ const chartOptions = ref({
   },
   series: props.series,
 });
+
+onMounted(() => {
+  HighCharts.chart("chart1", chartOptions.value);
+});
 </script>
 
 <style scoped>
 .q-pa-md {
-  width: 100%; 
+  width: 100%;
   max-width: 100%;
   height: 100%;
   max-height: 100%;
   box-sizing: border-box;
   padding: 0;
-  
 }
 
 .filter-card {
   display: grid;
-  width: 100%; 
-  max-width: 100%; 
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
-  height: 100%; 
+  height: 100%;
   border-radius: 12px;
   align-items: center;
-  box-shadow:
-    rgba(0, 0, 0, 0.19) 0px 10px 20px,
-    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .highcharts-container {
-  width: 100%; 
+  width: 100%;
   height: 98%;
   box-sizing: border-box;
 }

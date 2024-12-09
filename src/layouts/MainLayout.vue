@@ -24,7 +24,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer v-model="leftDrawerOpen" bordered>
       <q-list class="menu-text">
         <!-- <EssentialLink
           v-for="link in linksList"
@@ -206,7 +206,6 @@ const toggleDarkMode = () => {
 };
 
 function toggleLeftDrawer() {
-  Array;
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>
@@ -221,7 +220,7 @@ function toggleLeftDrawer() {
 .globalStyle {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif; /* Aplicar la fuente de Material Design */
+  /* font-family: "Roboto", sans-serif;  */
   display: grid;
   min-height: 100dvh;
   grid-auto-rows: auto 1fr;

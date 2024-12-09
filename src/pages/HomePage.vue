@@ -171,10 +171,8 @@ const serieArray = [
     transform: perspective(800px) rotateX(-5deg) rotateY(-10deg) scale(1.005);
   }
   .normalize-home {
-  
-  grid-template-rows: auto 1fr 1.5fr;
- 
-}
+    grid-template-rows: auto 1fr 1.5fr;
+  }
 }
 @media (min-width: 1010px) and (max-width: 1499px) {
   .data-cards {
@@ -188,10 +186,10 @@ const serieArray = [
     grid-template-rows: 0.5fr 3fr 3fr;
     max-height: none;
   }
-  
+
   .normalize-grid {
     grid-template-rows: 1fr 1fr;
-    max-height: none
+    max-height: none;
   }
 }
 @media (min-width: 712px) and (max-width: 1009px) {
@@ -199,7 +197,6 @@ const serieArray = [
     display: grid;
     grid-template-rows: 0.01fr 3fr 4fr;
     max-height: none;
-
   }
   .graph {
     grid-template-columns: 1fr;
@@ -208,8 +205,7 @@ const serieArray = [
   }
   .normalize-grid {
     grid-template-rows: 1fr 1.2fr;
-    max-height: none
-
+    max-height: none;
   }
 
   .weather:hover {
@@ -231,7 +227,6 @@ const serieArray = [
     display: grid;
     grid-template-rows: 0.01fr 3.6fr 3fr;
     max-height: none;
-
   }
 
   .weather:hover {
@@ -249,15 +244,12 @@ const serieArray = [
 
   .normalize-grid {
     grid-template-rows: 1.2fr 1fr;
-    max-height: none
-
+    max-height: none;
   }
   .graph {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fit, minmax(350px, 1fr));
     max-height: none;
   }
-  
-
 }
 </style>
