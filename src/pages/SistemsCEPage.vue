@@ -167,7 +167,7 @@ const rows = [
   height: 100%;
   display: grid;
   gap: 1rem;
-  grid-template-rows: 1fr 17fr;
+  grid-template-rows: 1fr 16fr;
 }
 
 .content {

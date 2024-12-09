@@ -141,12 +141,12 @@ const rows = ref([
 .filter-card {
   display: flex;
   box-sizing: border-box;
-  height: 100%;
+  height: 90%;
   padding-left:1rem;
   width: 100%;
 }
 :deep(.custom-table) {
-  max-height: 85dvh;
+  max-height: 80dvh;
   height: fit-content;
   width: 100%;
   ::-webkit-scrollbar {
