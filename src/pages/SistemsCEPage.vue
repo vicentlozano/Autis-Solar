@@ -31,9 +31,11 @@
               animated
               transition-prev="slide-down"
               transition-next="slide-up"
-              class="bg-transparent text-black"
+              class="bg-transparent text-black is-full"
+              
             >
               <q-tab-panel name="parameters" class="content">
+                <HomePage/>
               </q-tab-panel>
               
               <q-tab-panel name="advancedParameters" class="content">
@@ -61,6 +63,7 @@ import AdvancedParameters from "src/components/sistemCE/AdvancedParameters.vue";
 import FilterTab from "src/components/FilterTab.vue";
 import { ref } from "vue";
 import SimpleTab from "src/components/SimpleTab.vue";
+import HomePage from "./HomePage.vue";
 
 const tab = ref("contador");
 const innerTab = ref("parameters");
@@ -167,7 +170,7 @@ const rows = [
   height: 100%;
   display: grid;
   gap: 1rem;
-  grid-template-rows: 1fr 16fr;
+  grid-template-rows: minmax(40px,50px) 1fr;
 }
 
 .content {
@@ -176,9 +179,7 @@ const rows = [
   padding: 0;
 }
 
-.banner {
-  min-height: 50px;
-}
+
 
 /* Contenedor principal */
 .panel-container {
@@ -188,17 +189,20 @@ const rows = [
 
 /* Panel izquierdo fijo */
 .left-panel {
-  width: fit-content; /* Ajusta el ancho según lo necesario */
+  width: fit-content; 
   background-color: transparent;
 }
 
 /* Panel derecho dinámico */
 .right-panel {
-  flex: 1; /* Ocupa el espacio restante */
+  flex: 1; 
 }
 .custom-label{
   white-space: pre-wrap;
   text-align: center; /* Opcional: Centrar el texto */
   line-height: 1.5; /* Ajusta el espaciado entre líneas */
+}
+.is-full{
+height: 100%;
 }
 </style>
