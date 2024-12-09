@@ -17,7 +17,12 @@
 
 <script setup>
 import { ref } from "vue";
-
+const props  = defineProps({
+  title: {
+    type: String,
+    default: '', // Define el valor predeterminado
+  },
+})
 const columns = ref([
   {
     name: "name",

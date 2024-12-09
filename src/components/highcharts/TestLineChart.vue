@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineProps, watch, onMounted } from "vue";
+import { ref, computed, defineProps, watch, onMounted} from "vue";
 import { Dark } from "quasar";
 import HighCharts from "highcharts";
 
@@ -89,6 +89,7 @@ const chartOptions = ref({
 onMounted(() => {
   HighCharts.chart("chart1", chartOptions.value);
 });
+
 </script>
 
 <style scoped>

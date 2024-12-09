@@ -3,24 +3,24 @@
     <q-tabs
       v-model="tab"
       dense
-      class="text-grey-7n banner"
-      active-color="primary"
-      indicator-color="purple"
+      class="text-grey-n7 banner"
+      active-color="accent"
+      indicator-color="accent"
       align="justify"
     >
-      <q-tab name="contador" label="Contador" class="minimal"/>
+      <q-tab name="contador" label="Contador" />
       <q-tab name="rele" label="Rele" />
     </q-tabs>
 
-    <q-tab-panels v-model="tab" animated class="bg-transparent text-white map">
+    <q-tab-panels v-model="tab" animated class="bg-transparent  map">
       <q-tab-panel name="contador" class="content">
         <div class="panel-container">
           <!-- Panel izquierdo fijo -->
           <div class="left-panel">
-            <q-tabs v-model="innerTab" vertical class="text-teal">
-              <q-tab name="parameters" icon="mail" label="Parameters" class="custom-label" />
-              <q-tab name="advancedParameters" icon="mdi-abacus" label="Advanced Parameters" class="custom-label" />
-              <q-tab name="historic" icon="movie" label="Historic" class="custom-label" />
+            <q-tabs v-model="innerTab" vertical class="text-grey" active-color="accent" indicator-color="accent">
+              <q-tab name="parameters" icon="mdi-cog" label="Parameters" class="custom-label" />
+              <q-tab name="advancedParameters" icon="mdi-cogs" label="Advanced Parameters" class="custom-label" />
+              <q-tab name="historic" icon="mdi-history" label="Historic" class="custom-label" />
             </q-tabs>
           </div>
 
@@ -205,14 +205,9 @@ const rows = [
 .is-full{
 height: 100%;
 }
-.minimal {
-  ::v-deep(.q-tab__label) {
-  font-size: 14px;
-  line-height: 1.8em;
-  font-weight: 600;
-}
-}
-.text-teal {
+
+
+.text-grey{
   ::v-deep(.q-tab__label) {
   font-size: 11px;
   line-height: 1.8em;

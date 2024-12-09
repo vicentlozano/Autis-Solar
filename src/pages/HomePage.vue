@@ -63,7 +63,7 @@ import DataCard from "src/components/cards/DataCard.vue";
 import TestLineChart from "src/components/highcharts/TestLineChart.vue";
 import MapComponent from "src/components/MapComponent.vue";
 
-const isAlarm = ref(false);
+const isAlarm = ref(true);
 const title = "Sistema 1";
 const icon = "/icons/sistemIcon.png";
 const data = ref(33.5);
