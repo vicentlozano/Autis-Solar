@@ -8,7 +8,7 @@
       indicator-color="purple"
       align="justify"
     >
-      <q-tab name="contador" label="Contador" />
+      <q-tab name="contador" label="Contador" class="minimal"/>
       <q-tab name="rele" label="Rele" />
     </q-tabs>
 
@@ -189,7 +189,7 @@ const rows = [
 
 /* Panel izquierdo fijo */
 .left-panel {
-  width: fit-content; 
+  width: 100px; 
   background-color: transparent;
 }
 
@@ -205,4 +205,19 @@ const rows = [
 .is-full{
 height: 100%;
 }
+.minimal {
+  ::v-deep(.q-tab__label) {
+  font-size: 14px;
+  line-height: 1.8em;
+  font-weight: 600;
+}
+}
+.text-teal {
+  ::v-deep(.q-tab__label) {
+  font-size: 11px;
+  line-height: 1.8em;
+  font-weight: 600;
+}
+}
+
 </style>
